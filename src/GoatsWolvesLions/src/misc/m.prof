@@ -1,0 +1,49 @@
+	Fri Jun  6 03:39 2014 Time and Allocation Profiling Report  (Final)
+
+	   m +RTS -p -RTS 117 155 6
+
+	total time  =        4.53 secs   (4527 ticks @ 1000 us, 1 processor)
+	total alloc = 561,318,456 bytes  (excludes profiling overheads)
+
+COST CENTRE     MODULE    %time %alloc
+
+meal            GWLStrict  92.2   58.1
+forestCmp       GWLStrict   2.3    0.0
+forestCmp.cmpg  GWLStrict   1.4    0.0
+wolfDevoursGoat GWLStrict   0.9    8.2
+lionDevoursGoat GWLStrict   0.7    8.0
+lionDevoursWolf GWLStrict   0.5    8.1
+gwlMeal         GWLStrict   0.4    7.9
+meal.\          GWLStrict   0.3    5.2
+isStable        GWLStrict   0.2    4.5
+
+
+                                                                                   individual     inherited
+COST CENTRE                              MODULE                  no.     entries  %time %alloc   %time %alloc
+
+MAIN                                     MAIN                     50           0    0.0    0.0   100.0  100.0
+ CAF                                     Text.Read.Lex            96           0    0.0    0.0     0.0    0.0
+ CAF                                     GHC.Conc.Signal          94           0    0.0    0.0     0.0    0.0
+ CAF                                     GHC.IO.Encoding          92           0    0.0    0.0     0.0    0.0
+ CAF                                     GHC.IO.Handle.FD         91           0    0.0    0.0     0.0    0.0
+ CAF                                     GHC.IO.Encoding.Iconv    78           0    0.0    0.0     0.0    0.0
+ CAF                                     GWLStrict                58           0    0.0    0.0     0.0    0.0
+  tf                                     GWLStrict               106           1    0.0    0.0     0.0    0.0
+ CAF                                     Main                     57           0    0.0    0.0   100.0  100.0
+  main                                   Main                    100           1    0.0    0.0   100.0  100.0
+   main.ri                               Main                    105           3    0.0    0.0     0.0    0.0
+   findStableForests                     GWLStrict               101           1    0.0    0.0   100.0  100.0
+    stableForests                        GWLStrict               116           1    0.0    0.0     0.0    0.1
+     isStable                            GWLStrict               117        1953    0.0    0.1     0.0    0.1
+    findStableForests.findStableForests' GWLStrict               102         156    0.0    0.0   100.0   99.9
+     meal                                GWLStrict               107         155   92.2   58.1    99.6   95.5
+      forestCmp                          GWLStrict               112     4013439    2.3    0.0     4.7    0.0
+       forestCmp.cmpw                    GWLStrict               114     1978456    0.9    0.0     0.9    0.0
+       forestCmp.cmpg                    GWLStrict               113     4013439    1.4    0.0     1.4    0.0
+      meal.\                             GWLStrict               108      155533    0.3    5.2     2.8   37.4
+       gwlMeal                           GWLStrict               109      155533    0.4    7.9     2.5   32.2
+        lionDevoursWolf                  GWLStrict               115      155533    0.5    8.1     0.5    8.1
+        lionDevoursGoat                  GWLStrict               111      155533    0.7    8.0     0.7    8.0
+        wolfDevoursGoat                  GWLStrict               110      155533    0.9    8.2     0.9    8.2
+     devouringPossible                   GWLStrict               103         156    0.1    0.0     0.4    4.4
+      isStable                           GWLStrict               104      155534    0.2    4.4     0.2    4.4

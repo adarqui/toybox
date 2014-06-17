@@ -1,0 +1,47 @@
+	Tue Jun 17 01:25 2014 Time and Allocation Profiling Report  (Final)
+
+	   gwl-nonstrict +RTS -P -RTS 177 155 6
+
+	total time  =       10.70 secs   (10695 ticks @ 1000 us, 1 processor)
+	total alloc = 813,795,040 bytes  (excludes profiling overheads)
+
+COST CENTRE     MODULE  %time %alloc  ticks     bytes
+
+meal            Main     97.0   68.9  10374 561012464
+gwlMeal         Main      0.4   10.4     39  84670320
+wolfDevoursGoat Main      0.2    5.2     26  42429408
+meal.\          Main      0.2    5.2     22  42009912
+lionDevoursWolf Main      0.2    5.1     22  41725320
+lionDevoursGoat Main      0.2    5.1     17  41875008
+
+
+                                                                                  individual     inherited
+COST CENTRE                             MODULE                  no.     entries  %time %alloc   %time %alloc  ticks     bytes
+
+MAIN                                    MAIN                     48           0    0.0    0.0   100.0  100.0      0       744
+ main                                   Main                     97           0    0.0    0.0   100.0  100.0      0     14392
+  main.ri                               Main                    102           3    0.0    0.0     0.0    0.0      0     14232
+  findStableForests                     Main                     98           1    0.0    0.0   100.0  100.0      0        32
+   stableForests                        Main                    117           1    0.0    0.0     0.0    0.0      0        56
+    isStable                            Main                    118        3321    0.0    0.0     0.0    0.0      0         0
+   findStableForests.findStableForests' Main                     99         178    0.0    0.0   100.0  100.0      0         0
+    meal                                Main                    105         177   97.0   68.9    99.9  100.0  10374 561012464
+     forestCmp                          Main                    113     6979402    0.9    0.0     1.7    0.0     91         0
+      forestCmp.cmpw                    Main                    115     3394049    0.2    0.0     0.2    0.0     26         0
+      forestCmp.cmpg                    Main                    114     6979402    0.6    0.0     0.6    0.0     64         0
+     meal.\                             Main                    106      253447    0.2    5.2     1.2   31.1     22  42009912
+      gwlMeal                           Main                    107      253447    0.4   10.4     1.0   25.9     39  84670320
+       lionDevoursWolf                  Main                    116      253447    0.2    5.1     0.2    5.1     22  41725320
+       lionDevoursGoat                  Main                    109      253447    0.2    5.1     0.2    5.1     17  41875008
+       wolfDevoursGoat                  Main                    108      253447    0.2    5.2     0.2    5.2     26  42429408
+    devouringPossible                   Main                    100         178    0.1    0.0     0.1    0.0      9        24
+     isStable                           Main                    101      253448    0.0    0.0     0.0    0.0      5        16
+ CAF                                    GHC.IO.Handle.FD         94           0    0.0    0.0     0.0    0.0      0     34512
+ CAF                                    Text.Read.Lex            91           0    0.0    0.0     0.0    0.0      0      2120
+ CAF                                    GHC.Conc.Signal          89           0    0.0    0.0     0.0    0.0      0       656
+ CAF                                    GHC.IO.Encoding          87           0    0.0    0.0     0.0    0.0      0      3280
+ CAF                                    GHC.IO.Encoding.Iconv    78           0    0.0    0.0     0.0    0.0      0       232
+ CAF                                    Main                     55           0    0.0    0.0     0.0    0.0      0       104
+  tf                                    Main                    104           1    0.0    0.0     0.0    0.0      0         0
+  main                                  Main                     96           1    0.0    0.0     0.0    0.0      0         0
+   main.ri                              Main                    103           0    0.0    0.0     0.0    0.0      0      2208
