@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Criterion benchmarks" tests="16">
+  <testcase name="sums/nf/foldl" time="0.00000013534217174550933" />
+  <testcase name="sums/nf/foldl&apos;" time="0.00000013549217205111317" />
+  <testcase name="sums/nf/foldr" time="0.0000001466269719983211" />
+  <testcase name="sums/nf/sum" time="0.00000013562404051941848" />
+  <testcase name="sums/whnf/foldl" time="0.0000001269502825963912" />
+  <testcase name="sums/whnf/foldl&apos;" time="0.0000001269020014947171" />
+  <testcase name="sums/whnf/foldr" time="0.00000014458279678376368" />
+  <testcase name="sums/whnf/sum" time="0.00000012563787441001034" />
+  <testcase name="comparing sums nf/whnf/nf/foldl" time="0.00000013517607085122066" />
+  <testcase name="comparing sums nf/whnf/nf/foldl&apos;" time="0.00000013537016881322477" />
+  <testcase name="comparing sums nf/whnf/nf/foldr" time="0.00000014613212920719563" />
+  <testcase name="comparing sums nf/whnf/nf/sum" time="0.00000013451182591974848" />
+  <testcase name="comparing sums nf/whnf/whnf/foldl" time="0.00000012540952816953922" />
+  <testcase name="comparing sums nf/whnf/whnf/foldl&apos;" time="0.00000012962893346156564" />
+  <testcase name="comparing sums nf/whnf/whnf/foldr" time="0.00000014397565082397284" />
+  <testcase name="comparing sums nf/whnf/whnf/sum" time="0.00000012516419839476897" />
+</testsuite>

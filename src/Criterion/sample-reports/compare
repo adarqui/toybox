@@ -1,0 +1,8 @@
+Reference,Name,% faster than reference
+comparing sums nf/whnf/nf/foldl,comparing sums nf/whnf/nf/foldl',-0
+comparing sums nf/whnf/nf/foldl,comparing sums nf/whnf/nf/foldr,-8
+comparing sums nf/whnf/nf/foldl,comparing sums nf/whnf/nf/sum,0
+comparing sums nf/whnf/nf/foldl,comparing sums nf/whnf/whnf/foldl,7
+comparing sums nf/whnf/nf/foldl,comparing sums nf/whnf/whnf/foldl',4
+comparing sums nf/whnf/nf/foldl,comparing sums nf/whnf/whnf/foldr,-7
+comparing sums nf/whnf/nf/foldl,comparing sums nf/whnf/whnf/sum,7

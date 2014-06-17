@@ -1,0 +1,16 @@
+name:                Data
+version:             0.1.0.0
+synopsis:            ToyBox - haskell variant
+homepage:            https://github.com/adarqui/ToyBox
+author:              adarqui
+maintainer:          andrew.darqui@gmail.com
+category:            ToyBox
+build-type:          Simple
+cabal-version:       >=1.8
+
+executable "maybe"
+  main-is:             maybe.hs
+  build-depends:
+   base ==4.7.*
+  GHC-Options:         -O2 -Wall -rtsopts -auto-all -prof
+  hs-source-dirs:      ./src

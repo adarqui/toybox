@@ -1,0 +1,40 @@
+	Sat Jun 14 14:20 2014 Time and Allocation Profiling Report  (Final)
+
+	   parse +RTS -P -RTS -
+
+	total time  =       18.86 secs   (18863 ticks @ 1000 us, 1 processor)
+	total alloc = 56,629,153,648 bytes  (excludes profiling overheads)
+
+COST CENTRE   MODULE  %time %alloc  ticks     bytes
+
+parseArg      Main     84.9   84.2  16014 47667553800
+fromHandle.go Main      8.6    6.6   1622 3761631768
+readStdin     Main      6.5    9.2   1227 5199906776
+
+
+                                                               individual     inherited
+COST CENTRE          MODULE                  no.     entries  %time %alloc   %time %alloc  ticks     bytes
+
+MAIN                 MAIN                     84           0    0.0    0.0   100.0  100.0      0      2232
+ main                Main                    169           0    0.0    0.0   100.0  100.0      0      1120
+  parse              Main                    170           1    0.0    0.0   100.0  100.0      0         0
+   parseArg          Main                    171           1   84.9   84.2   100.0  100.0  16014 47667553800
+    readStdin        Main                    173           0    6.5    9.2    15.1   15.8   1227 5199906776
+     stdin           Main                    180           0    0.0    0.0     8.6    6.6      0         0
+      fromHandle     Main                    181           0    0.0    0.0     8.6    6.6      0         0
+       fromHandle.go Main                    182           0    8.6    6.6     8.6    6.6   1622 3761631728
+     collect         Main                    178           0    0.0    0.0     0.0    0.0      0       728
+      fromHandle.go  Main                    179           0    0.0    0.0     0.0    0.0      0        40
+ CAF                 GHC.IO.Handle.FD        164           0    0.0    0.0     0.0    0.0      0     51776
+ CAF                 GHC.TopHandler          161           0    0.0    0.0     0.0    0.0      0        48
+ CAF                 GHC.Conc.Signal         156           0    0.0    0.0     0.0    0.0      0       656
+ CAF                 GHC.IO.Encoding         154           0    0.0    0.0     0.0    0.0      0      3280
+ CAF                 GHC.IO.Encoding.Iconv   144           0    0.0    0.0     0.0    0.0      0       232
+ CAF                 Main                    123           0    0.0    0.0     0.0    0.0      0        32
+  readStdin          Main                    172           1    0.0    0.0     0.0    0.0      0         0
+   stdin             Main                    175           1    0.0    0.0     0.0    0.0      0        16
+    fromHandle       Main                    176           1    0.0    0.0     0.0    0.0      0        16
+     fromHandle.go   Main                    177           1    0.0    0.0     0.0    0.0      0         0
+   collect           Main                    174           1    0.0    0.0     0.0    0.0      0       432
+  main               Main                    168           1    0.0    0.0     0.0    0.0      0         0
+ CAF                 Text.CSV                120           0    0.0    0.0     0.0    0.0      0       736
