@@ -14,7 +14,23 @@ executable "Santa"
    base ==4.7.*,
    stm,
    random
---   stm ==2.4.3,
---   random ==1.0.1.1
+  GHC-Options:         -O2 -Wall -rtsopts -auto-all -prof
+  hs-source-dirs:      ./src
+
+executable "SantaNoElf"
+  main-is:             SantaNoElf.hs
+  build-depends:
+   base ==4.7.*,
+   stm,
+   random
+  GHC-Options:         -O2 -Wall -rtsopts -auto-all -prof
+  hs-source-dirs:      ./src
+
+executable "SantaClean"
+  main-is:             SantaClean.hs
+  build-depends:
+   base ==4.7.*,
+   stm,
+   random
   GHC-Options:         -O2 -Wall -rtsopts -auto-all -prof
   hs-source-dirs:      ./src
