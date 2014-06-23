@@ -1,0 +1,1118 @@
+Glasgow Haskell Compiler, Version 7.8.2, stage 2 booted by GHC version 7.4.1
+Using binary package database: /usr/lib/ghc-7.8.2/package.conf.d/package.cache
+Using binary package database: /home/d/.ghc/x86_64-linux-7.8.2/package.conf.d/package.cache
+hiding package transformers-0.3.0.0 to avoid conflict with later version transformers-0.4.1.0
+wired-in package ghc-prim mapped to ghc-prim-0.3.1.0-948744e1f99cc8bcc7c7d3ba60c7c2d8
+wired-in package integer-gmp mapped to integer-gmp-0.5.1.0-dc47f6b546fc171f67a7f7d311684a99
+wired-in package base mapped to base-4.7.0.0-018311399e3b6350d5be3a16b144df9b
+wired-in package rts mapped to builtin_rts
+wired-in package template-haskell mapped to template-haskell-2.9.0.0-dcc8c210fb02937e104bc1784d7b0f06
+wired-in package dph-seq not found.
+wired-in package dph-par not found.
+hiding package transformers-0.3.0.0 to avoid conflict with later version transformers-0.4.1.0
+wired-in package ghc-prim mapped to ghc-prim-0.3.1.0-948744e1f99cc8bcc7c7d3ba60c7c2d8
+wired-in package integer-gmp mapped to integer-gmp-0.5.1.0-dc47f6b546fc171f67a7f7d311684a99
+wired-in package base mapped to base-4.7.0.0-018311399e3b6350d5be3a16b144df9b
+wired-in package rts mapped to builtin_rts
+wired-in package template-haskell mapped to template-haskell-2.9.0.0-dcc8c210fb02937e104bc1784d7b0f06
+wired-in package dph-seq not found.
+wired-in package dph-par not found.
+*** Chasing dependencies:
+Chasing modules from: *src/Core/Foo.hs
+Stable obj: []
+Stable BCO: []
+Ready for upsweep
+  [NONREC
+      ModSummary {
+         ms_hs_date = 2014-06-22 08:17:15.255558545 UTC
+         ms_mod = main:Core.ClassFoo,
+         ms_textual_imps = [import (implicit) Prelude]
+         ms_srcimps = []
+      },
+   NONREC
+      ModSummary {
+         ms_hs_date = 2014-06-22 08:11:33.231562389 UTC
+         ms_mod = main:Core.Foo,
+         ms_textual_imps = [import (implicit) Prelude, import Core.ClassFoo]
+         ms_srcimps = []
+      }]
+*** Deleting temp files:
+compile: input file src/Core/ClassFoo.hs
+Created temporary directory: /tmp/ghc3187_0
+*** Checking old interface for main:Core.ClassFoo:
+[1 of 2] Compiling Core.ClassFoo    ( src/Core/ClassFoo.hs, src/Core/ClassFoo.o )
+*** Parser:
+
+==================== Parser ====================
+module Core.ClassFoo (
+        Foo(..)
+    ) where
+class Foo a where
+  foo :: a -> Char
+instance Foo Bool where
+  foo True = 't'
+  foo False = 'f'
+
+
+*** Renamer/typechecker:
+TYPE SIGNATURES
+TYPE CONSTRUCTORS
+  Foo :: * -> Constraint
+  class Foo a
+    Roles: [nominal]
+    RecFlag NonRecursive
+    foo :: a -> Char
+COERCION AXIOMS
+  axiom Core.ClassFoo.NTCo:Foo :: Foo a = a -> Char
+INSTANCES
+  instance Foo Bool -- Defined at src/Core/ClassFoo.hs:8:10
+Dependent modules: []
+Dependent packages: [base, ghc-prim, integer-gmp]
+
+==================== Typechecker ====================
+AbsBinds [] []
+  {Exports: [Core.ClassFoo.$fFooBool <= $dFoo
+               <>]
+   Exported types: Core.ClassFoo.$fFooBool :: Foo Bool
+   Binds: $dFoo = Core.ClassFoo.D:Foo $cfoo}
+AbsBinds [] []
+  {Exports: [$cfoo <= foo
+               <>]
+   Exported types: $cfoo :: Bool -> Char
+   Binds: AbsBinds [] []
+            {Exports: [foo <= foo
+                         <>]
+             Exported types: foo :: Bool -> Char
+             Binds: foo True = 't'
+                    foo False = 'f'}}
+
+*** Desugar:
+
+==================== Desugar (after optimization) ====================
+Result size of Desugar (after optimization)
+  = {terms: 13, types: 7, coercions: 0}
+
+$cfoo :: GHC.Types.Bool -> GHC.Types.Char
+$cfoo =
+  \ (ds :: GHC.Types.Bool) ->
+    case ds of _ {
+      GHC.Types.False -> GHC.Types.C# 'f';
+      GHC.Types.True -> GHC.Types.C# 't'
+    }
+
+Core.ClassFoo.$fFooBool :: Core.ClassFoo.Foo GHC.Types.Bool
+Core.ClassFoo.$fFooBool = Core.ClassFoo.D:Foo $cfoo
+
+
+
+*** Core Linted result of Desugar (after optimization):
+*** Simplifier:
+SimplBind [$cfoo{v aKe} [lid]]
+SimplBind [main:Core.ClassFoo.$fFooBool{v r0} [lidx[DFunId(nt)]]]
+Result size of Simplifier iteration=1
+  = {terms: 12, types: 6, coercions: 3}
+*** Core Linted result of Simplifier:
+SimplBind [$cfoo{v aKe} [lid]]
+SimplBind [main:Core.ClassFoo.$fFooBool{v r0} [lidx[DFunId(nt)]]]
+
+==================== Simplifier ====================
+  Max iterations = 4
+  SimplMode {Phase = InitialPhase [Gentle],
+             no inline,
+             rules,
+             eta-expand,
+             no case-of-case}
+Result size of Simplifier = {terms: 12, types: 6, coercions: 3}
+
+$cfoo :: GHC.Types.Bool -> GHC.Types.Char
+$cfoo =
+  \ (ds :: GHC.Types.Bool) ->
+    case ds of _ {
+      GHC.Types.False -> GHC.Types.C# 'f';
+      GHC.Types.True -> GHC.Types.C# 't'
+    }
+
+Core.ClassFoo.$fFooBool :: Core.ClassFoo.Foo GHC.Types.Bool
+Core.ClassFoo.$fFooBool =
+  $cfoo
+  `cast` (Sym (Core.ClassFoo.NTCo:Foo[0] <GHC.Types.Bool>_N)
+          :: (GHC.Types.Bool -> GHC.Types.Char)
+               ~#
+             Core.ClassFoo.Foo GHC.Types.Bool)
+
+
+
+*** Core Linted result of Simplifier:
+*** Specialise:
+
+==================== Specialise ====================
+Result size of Specialise = {terms: 12, types: 6, coercions: 3}
+
+$cfoo :: GHC.Types.Bool -> GHC.Types.Char
+$cfoo =
+  \ (ds :: GHC.Types.Bool) ->
+    case ds of _ {
+      GHC.Types.False -> GHC.Types.C# 'f';
+      GHC.Types.True -> GHC.Types.C# 't'
+    }
+
+Core.ClassFoo.$fFooBool :: Core.ClassFoo.Foo GHC.Types.Bool
+Core.ClassFoo.$fFooBool =
+  $cfoo
+  `cast` (Sym (Core.ClassFoo.NTCo:Foo[0] <GHC.Types.Bool>_N)
+          :: (GHC.Types.Bool -> GHC.Types.Char)
+               ~#
+             Core.ClassFoo.Foo GHC.Types.Bool)
+
+
+
+*** Core Linted result of Specialise:
+*** Float out(FOS {Lam = Just 0, Consts = True, PAPs = False}):
+
+==================== Levels added: ====================
+<$cfoo,<0,0>>
+<$cfoo,<0,0>> =
+  \ <ds,<1,0>> ->
+    case ds of <wild,<1,1>> {
+      GHC.Types.False ->
+        let {
+          <lvl,F<0,0>>
+          <lvl,F<0,0>> = GHC.Types.C# 'f' } in
+        lvl;
+      GHC.Types.True ->
+        let {
+          <lvl,F<0,0>>
+          <lvl,F<0,0>> = GHC.Types.C# 't' } in
+        lvl
+    }
+<Core.ClassFoo.$fFooBool,<0,0>>
+<Core.ClassFoo.$fFooBool,<0,0>> =
+  $cfoo
+  `cast` (Sym (Core.ClassFoo.NTCo:Foo[0] <GHC.Types.Bool>_N)
+          :: (GHC.Types.Bool -> GHC.Types.Char)
+               ~#
+             Core.ClassFoo.Foo GHC.Types.Bool)
+
+
+
+==================== Float out(FOS {Lam = Just 0, Consts = True, PAPs = False}) ====================
+Result size of Float out(FOS {Lam = Just 0,
+                              Consts = True,
+                              PAPs = False})
+  = {terms: 16, types: 8, coercions: 3}
+
+lvl :: GHC.Types.Char
+lvl = GHC.Types.C# 'f'
+
+lvl :: GHC.Types.Char
+lvl = GHC.Types.C# 't'
+
+$cfoo :: GHC.Types.Bool -> GHC.Types.Char
+$cfoo =
+  \ (ds :: GHC.Types.Bool) ->
+    case ds of _ {
+      GHC.Types.False -> lvl;
+      GHC.Types.True -> lvl
+    }
+
+Core.ClassFoo.$fFooBool :: Core.ClassFoo.Foo GHC.Types.Bool
+Core.ClassFoo.$fFooBool =
+  $cfoo
+  `cast` (Sym (Core.ClassFoo.NTCo:Foo[0] <GHC.Types.Bool>_N)
+          :: (GHC.Types.Bool -> GHC.Types.Char)
+               ~#
+             Core.ClassFoo.Foo GHC.Types.Bool)
+
+
+
+*** Core Linted result of Float out(FOS {Lam = Just 0, Consts = True, PAPs = False}):
+*** Float inwards:
+
+==================== Float inwards ====================
+Result size of Float inwards = {terms: 16, types: 8, coercions: 3}
+
+lvl :: GHC.Types.Char
+lvl = GHC.Types.C# 'f'
+
+lvl :: GHC.Types.Char
+lvl = GHC.Types.C# 't'
+
+$cfoo :: GHC.Types.Bool -> GHC.Types.Char
+$cfoo =
+  \ (ds :: GHC.Types.Bool) ->
+    case ds of _ {
+      GHC.Types.False -> lvl;
+      GHC.Types.True -> lvl
+    }
+
+Core.ClassFoo.$fFooBool :: Core.ClassFoo.Foo GHC.Types.Bool
+Core.ClassFoo.$fFooBool =
+  $cfoo
+  `cast` (Sym (Core.ClassFoo.NTCo:Foo[0] <GHC.Types.Bool>_N)
+          :: (GHC.Types.Bool -> GHC.Types.Char)
+               ~#
+             Core.ClassFoo.Foo GHC.Types.Bool)
+
+
+
+*** Core Linted result of Float inwards:
+*** Simplifier:
+SimplBind [lvl{v} [lid]]
+SimplBind [lvl{v} [lid]]
+SimplBind [$cfoo{v aKe} [lid]]
+SimplBind [main:Core.ClassFoo.$fFooBool{v r0} [lidx[DFunId(nt)]]]
+
+==================== Simplifier ====================
+  Max iterations = 4
+  SimplMode {Phase = 2 [main],
+             inline,
+             rules,
+             eta-expand,
+             case-of-case}
+Result size of Simplifier = {terms: 16, types: 8, coercions: 3}
+
+lvl :: GHC.Types.Char
+lvl = GHC.Types.C# 'f'
+
+lvl :: GHC.Types.Char
+lvl = GHC.Types.C# 't'
+
+$cfoo :: GHC.Types.Bool -> GHC.Types.Char
+$cfoo =
+  \ (ds :: GHC.Types.Bool) ->
+    case ds of _ {
+      GHC.Types.False -> lvl;
+      GHC.Types.True -> lvl
+    }
+
+Core.ClassFoo.$fFooBool :: Core.ClassFoo.Foo GHC.Types.Bool
+Core.ClassFoo.$fFooBool =
+  $cfoo
+  `cast` (Sym (Core.ClassFoo.NTCo:Foo[0] <GHC.Types.Bool>_N)
+          :: (GHC.Types.Bool -> GHC.Types.Char)
+               ~#
+             Core.ClassFoo.Foo GHC.Types.Bool)
+
+
+
+*** Core Linted result of Simplifier:
+*** Simplifier:
+SimplBind [lvl{v} [lid]]
+SimplBind [lvl{v} [lid]]
+SimplBind [$cfoo{v aKe} [lid]]
+SimplBind [main:Core.ClassFoo.$fFooBool{v r0} [lidx[DFunId(nt)]]]
+
+==================== Simplifier ====================
+  Max iterations = 4
+  SimplMode {Phase = 1 [main],
+             inline,
+             rules,
+             eta-expand,
+             case-of-case}
+Result size of Simplifier = {terms: 16, types: 8, coercions: 3}
+
+lvl :: GHC.Types.Char
+lvl = GHC.Types.C# 'f'
+
+lvl :: GHC.Types.Char
+lvl = GHC.Types.C# 't'
+
+$cfoo :: GHC.Types.Bool -> GHC.Types.Char
+$cfoo =
+  \ (ds :: GHC.Types.Bool) ->
+    case ds of _ {
+      GHC.Types.False -> lvl;
+      GHC.Types.True -> lvl
+    }
+
+Core.ClassFoo.$fFooBool :: Core.ClassFoo.Foo GHC.Types.Bool
+Core.ClassFoo.$fFooBool =
+  $cfoo
+  `cast` (Sym (Core.ClassFoo.NTCo:Foo[0] <GHC.Types.Bool>_N)
+          :: (GHC.Types.Bool -> GHC.Types.Char)
+               ~#
+             Core.ClassFoo.Foo GHC.Types.Bool)
+
+
+
+*** Core Linted result of Simplifier:
+*** Simplifier:
+SimplBind [lvl{v} [lid]]
+SimplBind [lvl{v} [lid]]
+SimplBind [$cfoo{v aKe} [lid]]
+SimplBind [main:Core.ClassFoo.$fFooBool{v r0} [lidx[DFunId(nt)]]]
+
+==================== Simplifier ====================
+  Max iterations = 4
+  SimplMode {Phase = 0 [main],
+             inline,
+             rules,
+             eta-expand,
+             case-of-case}
+Result size of Simplifier = {terms: 16, types: 8, coercions: 3}
+
+lvl :: GHC.Types.Char
+lvl = GHC.Types.C# 'f'
+
+lvl :: GHC.Types.Char
+lvl = GHC.Types.C# 't'
+
+$cfoo :: GHC.Types.Bool -> GHC.Types.Char
+$cfoo =
+  \ (ds :: GHC.Types.Bool) ->
+    case ds of _ {
+      GHC.Types.False -> lvl;
+      GHC.Types.True -> lvl
+    }
+
+Core.ClassFoo.$fFooBool :: Core.ClassFoo.Foo GHC.Types.Bool
+Core.ClassFoo.$fFooBool =
+  $cfoo
+  `cast` (Sym (Core.ClassFoo.NTCo:Foo[0] <GHC.Types.Bool>_N)
+          :: (GHC.Types.Bool -> GHC.Types.Char)
+               ~#
+             Core.ClassFoo.Foo GHC.Types.Bool)
+
+
+
+*** Core Linted result of Simplifier:
+*** Demand analysis:
+
+==================== Demand analysis ====================
+Result size of Demand analysis
+  = {terms: 16, types: 8, coercions: 3}
+
+lvl :: GHC.Types.Char
+lvl = GHC.Types.C# 'f'
+
+lvl :: GHC.Types.Char
+lvl = GHC.Types.C# 't'
+
+$cfoo :: GHC.Types.Bool -> GHC.Types.Char
+$cfoo =
+  \ (ds :: GHC.Types.Bool) ->
+    case ds of _ {
+      GHC.Types.False -> lvl;
+      GHC.Types.True -> lvl
+    }
+
+Core.ClassFoo.$fFooBool :: Core.ClassFoo.Foo GHC.Types.Bool
+Core.ClassFoo.$fFooBool =
+  $cfoo
+  `cast` (Sym (Core.ClassFoo.NTCo:Foo[0] <GHC.Types.Bool>_N)
+          :: (GHC.Types.Bool -> GHC.Types.Char)
+               ~#
+             Core.ClassFoo.Foo GHC.Types.Bool)
+
+
+
+*** Core Linted result of Demand analysis:
+*** Worker Wrapper binds:
+
+==================== Worker Wrapper binds ====================
+Result size of Worker Wrapper binds
+  = {terms: 16, types: 8, coercions: 3}
+
+lvl :: GHC.Types.Char
+lvl = GHC.Types.C# 'f'
+
+lvl :: GHC.Types.Char
+lvl = GHC.Types.C# 't'
+
+$cfoo :: GHC.Types.Bool -> GHC.Types.Char
+$cfoo =
+  \ (ds :: GHC.Types.Bool) ->
+    case ds of _ {
+      GHC.Types.False -> lvl;
+      GHC.Types.True -> lvl
+    }
+
+Core.ClassFoo.$fFooBool :: Core.ClassFoo.Foo GHC.Types.Bool
+Core.ClassFoo.$fFooBool =
+  $cfoo
+  `cast` (Sym (Core.ClassFoo.NTCo:Foo[0] <GHC.Types.Bool>_N)
+          :: (GHC.Types.Bool -> GHC.Types.Char)
+               ~#
+             Core.ClassFoo.Foo GHC.Types.Bool)
+
+
+
+*** Core Linted result of Worker Wrapper binds:
+*** Simplifier:
+SimplBind [lvl{v} [lid]]
+SimplBind [lvl{v} [lid]]
+SimplBind [$cfoo{v aKe} [lid]]
+SimplBind [main:Core.ClassFoo.$fFooBool{v r0} [lidx[DFunId(nt)]]]
+
+==================== Simplifier ====================
+  Max iterations = 4
+  SimplMode {Phase = 0 [post-worker-wrapper],
+             inline,
+             rules,
+             eta-expand,
+             case-of-case}
+Result size of Simplifier = {terms: 16, types: 8, coercions: 3}
+
+lvl :: GHC.Types.Char
+lvl = GHC.Types.C# 'f'
+
+lvl :: GHC.Types.Char
+lvl = GHC.Types.C# 't'
+
+$cfoo :: GHC.Types.Bool -> GHC.Types.Char
+$cfoo =
+  \ (ds :: GHC.Types.Bool) ->
+    case ds of _ {
+      GHC.Types.False -> lvl;
+      GHC.Types.True -> lvl
+    }
+
+Core.ClassFoo.$fFooBool :: Core.ClassFoo.Foo GHC.Types.Bool
+Core.ClassFoo.$fFooBool =
+  $cfoo
+  `cast` (Sym (Core.ClassFoo.NTCo:Foo[0] <GHC.Types.Bool>_N)
+          :: (GHC.Types.Bool -> GHC.Types.Char)
+               ~#
+             Core.ClassFoo.Foo GHC.Types.Bool)
+
+
+
+*** Core Linted result of Simplifier:
+*** Float out(FOS {Lam = Just 0, Consts = True, PAPs = True}):
+
+==================== Levels added: ====================
+<lvl,<0,0>>
+<lvl,<0,0>> = GHC.Types.C# 'f'
+<lvl,<0,0>>
+<lvl,<0,0>> = GHC.Types.C# 't'
+<$cfoo,<0,0>>
+<$cfoo,<0,0>> =
+  \ <ds,<1,0>> ->
+    case ds of <wild,<1,1>> {
+      GHC.Types.False -> lvl;
+      GHC.Types.True -> lvl
+    }
+<Core.ClassFoo.$fFooBool,<0,0>>
+<Core.ClassFoo.$fFooBool,<0,0>> =
+  $cfoo
+  `cast` (Sym (Core.ClassFoo.NTCo:Foo[0] <GHC.Types.Bool>_N)
+          :: (GHC.Types.Bool -> GHC.Types.Char)
+               ~#
+             Core.ClassFoo.Foo GHC.Types.Bool)
+
+
+
+==================== Float out(FOS {Lam = Just 0, Consts = True, PAPs = True}) ====================
+Result size of Float out(FOS {Lam = Just 0,
+                              Consts = True,
+                              PAPs = True})
+  = {terms: 16, types: 8, coercions: 3}
+
+lvl :: GHC.Types.Char
+lvl = GHC.Types.C# 'f'
+
+lvl :: GHC.Types.Char
+lvl = GHC.Types.C# 't'
+
+$cfoo :: GHC.Types.Bool -> GHC.Types.Char
+$cfoo =
+  \ (ds :: GHC.Types.Bool) ->
+    case ds of _ {
+      GHC.Types.False -> lvl;
+      GHC.Types.True -> lvl
+    }
+
+Core.ClassFoo.$fFooBool :: Core.ClassFoo.Foo GHC.Types.Bool
+Core.ClassFoo.$fFooBool =
+  $cfoo
+  `cast` (Sym (Core.ClassFoo.NTCo:Foo[0] <GHC.Types.Bool>_N)
+          :: (GHC.Types.Bool -> GHC.Types.Char)
+               ~#
+             Core.ClassFoo.Foo GHC.Types.Bool)
+
+
+
+*** Core Linted result of Float out(FOS {Lam = Just 0, Consts = True, PAPs = True}):
+*** Common sub-expression:
+
+==================== Common sub-expression ====================
+Result size of Common sub-expression
+  = {terms: 16, types: 8, coercions: 3}
+
+lvl :: GHC.Types.Char
+lvl = GHC.Types.C# 'f'
+
+lvl :: GHC.Types.Char
+lvl = GHC.Types.C# 't'
+
+$cfoo :: GHC.Types.Bool -> GHC.Types.Char
+$cfoo =
+  \ (ds :: GHC.Types.Bool) ->
+    case ds of wild {
+      GHC.Types.False -> lvl;
+      GHC.Types.True -> lvl
+    }
+
+Core.ClassFoo.$fFooBool :: Core.ClassFoo.Foo GHC.Types.Bool
+Core.ClassFoo.$fFooBool =
+  $cfoo
+  `cast` (Sym (Core.ClassFoo.NTCo:Foo[0] <GHC.Types.Bool>_N)
+          :: (GHC.Types.Bool -> GHC.Types.Char)
+               ~#
+             Core.ClassFoo.Foo GHC.Types.Bool)
+
+
+
+*** Core Linted result of Common sub-expression:
+*** Float inwards:
+
+==================== Float inwards ====================
+Result size of Float inwards = {terms: 16, types: 8, coercions: 3}
+
+lvl :: GHC.Types.Char
+lvl = GHC.Types.C# 'f'
+
+lvl :: GHC.Types.Char
+lvl = GHC.Types.C# 't'
+
+$cfoo :: GHC.Types.Bool -> GHC.Types.Char
+$cfoo =
+  \ (ds :: GHC.Types.Bool) ->
+    case ds of wild {
+      GHC.Types.False -> lvl;
+      GHC.Types.True -> lvl
+    }
+
+Core.ClassFoo.$fFooBool :: Core.ClassFoo.Foo GHC.Types.Bool
+Core.ClassFoo.$fFooBool =
+  $cfoo
+  `cast` (Sym (Core.ClassFoo.NTCo:Foo[0] <GHC.Types.Bool>_N)
+          :: (GHC.Types.Bool -> GHC.Types.Char)
+               ~#
+             Core.ClassFoo.Foo GHC.Types.Bool)
+
+
+
+*** Core Linted result of Float inwards:
+*** Liberate case:
+
+==================== Liberate case ====================
+Result size of Liberate case = {terms: 16, types: 8, coercions: 3}
+
+lvl :: GHC.Types.Char
+lvl = GHC.Types.C# 'f'
+
+lvl :: GHC.Types.Char
+lvl = GHC.Types.C# 't'
+
+$cfoo :: GHC.Types.Bool -> GHC.Types.Char
+$cfoo =
+  \ (ds :: GHC.Types.Bool) ->
+    case ds of wild {
+      GHC.Types.False -> lvl;
+      GHC.Types.True -> lvl
+    }
+
+Core.ClassFoo.$fFooBool :: Core.ClassFoo.Foo GHC.Types.Bool
+Core.ClassFoo.$fFooBool =
+  $cfoo
+  `cast` (Sym (Core.ClassFoo.NTCo:Foo[0] <GHC.Types.Bool>_N)
+          :: (GHC.Types.Bool -> GHC.Types.Char)
+               ~#
+             Core.ClassFoo.Foo GHC.Types.Bool)
+
+
+
+*** Core Linted result of Liberate case:
+*** Simplifier:
+SimplBind [lvl{v} [lid]]
+SimplBind [lvl{v} [lid]]
+SimplBind [$cfoo{v aKe} [lid]]
+SimplBind [main:Core.ClassFoo.$fFooBool{v r0} [lidx[DFunId(nt)]]]
+
+==================== Simplifier ====================
+  Max iterations = 4
+  SimplMode {Phase = 0 [post-liberate-case],
+             inline,
+             rules,
+             eta-expand,
+             case-of-case}
+Result size of Simplifier = {terms: 16, types: 8, coercions: 3}
+
+lvl :: GHC.Types.Char
+lvl = GHC.Types.C# 'f'
+
+lvl :: GHC.Types.Char
+lvl = GHC.Types.C# 't'
+
+$cfoo :: GHC.Types.Bool -> GHC.Types.Char
+$cfoo =
+  \ (ds :: GHC.Types.Bool) ->
+    case ds of _ {
+      GHC.Types.False -> lvl;
+      GHC.Types.True -> lvl
+    }
+
+Core.ClassFoo.$fFooBool :: Core.ClassFoo.Foo GHC.Types.Bool
+Core.ClassFoo.$fFooBool =
+  $cfoo
+  `cast` (Sym (Core.ClassFoo.NTCo:Foo[0] <GHC.Types.Bool>_N)
+          :: (GHC.Types.Bool -> GHC.Types.Char)
+               ~#
+             Core.ClassFoo.Foo GHC.Types.Bool)
+
+
+
+*** Core Linted result of Simplifier:
+*** SpecConstr:
+
+==================== SpecConstr ====================
+Result size of SpecConstr = {terms: 16, types: 8, coercions: 3}
+
+lvl :: GHC.Types.Char
+lvl = GHC.Types.C# 'f'
+
+lvl :: GHC.Types.Char
+lvl = GHC.Types.C# 't'
+
+$cfoo :: GHC.Types.Bool -> GHC.Types.Char
+$cfoo =
+  \ (ds :: GHC.Types.Bool) ->
+    case ds of _ {
+      GHC.Types.False -> lvl;
+      GHC.Types.True -> lvl
+    }
+
+Core.ClassFoo.$fFooBool :: Core.ClassFoo.Foo GHC.Types.Bool
+Core.ClassFoo.$fFooBool =
+  $cfoo
+  `cast` (Sym (Core.ClassFoo.NTCo:Foo[0] <GHC.Types.Bool>_N)
+          :: (GHC.Types.Bool -> GHC.Types.Char)
+               ~#
+             Core.ClassFoo.Foo GHC.Types.Bool)
+
+
+
+*** Core Linted result of SpecConstr:
+*** Simplifier:
+SimplBind [lvl{v} [lid]]
+SimplBind [lvl{v} [lid]]
+SimplBind [$cfoo{v aKe} [lid]]
+SimplBind [main:Core.ClassFoo.$fFooBool{v r0} [lidx[DFunId(nt)]]]
+
+==================== Simplifier ====================
+  Max iterations = 4
+  SimplMode {Phase = 0 [final],
+             inline,
+             rules,
+             eta-expand,
+             case-of-case}
+Result size of Simplifier = {terms: 16, types: 8, coercions: 3}
+
+lvl :: GHC.Types.Char
+lvl = GHC.Types.C# 'f'
+
+lvl :: GHC.Types.Char
+lvl = GHC.Types.C# 't'
+
+$cfoo :: GHC.Types.Bool -> GHC.Types.Char
+$cfoo =
+  \ (ds :: GHC.Types.Bool) ->
+    case ds of _ {
+      GHC.Types.False -> lvl;
+      GHC.Types.True -> lvl
+    }
+
+Core.ClassFoo.$fFooBool :: Core.ClassFoo.Foo GHC.Types.Bool
+Core.ClassFoo.$fFooBool =
+  $cfoo
+  `cast` (Sym (Core.ClassFoo.NTCo:Foo[0] <GHC.Types.Bool>_N)
+          :: (GHC.Types.Bool -> GHC.Types.Char)
+               ~#
+             Core.ClassFoo.Foo GHC.Types.Bool)
+
+
+
+*** Core Linted result of Simplifier:
+*** Tidy Core:
+
+==================== Tidy Core ====================
+Result size of Tidy Core = {terms: 20, types: 16, coercions: 5}
+
+Core.ClassFoo.foo
+  :: forall a. Core.ClassFoo.Foo a => a -> GHC.Types.Char
+Core.ClassFoo.foo =
+  \ (@ a) (tpl :: Core.ClassFoo.Foo a) ->
+    tpl
+    `cast` (Core.ClassFoo.NTCo:Foo[0] <a>_N
+            :: Core.ClassFoo.Foo a ~# (a -> GHC.Types.Char))
+
+Core.ClassFoo.$fFooBool2 :: GHC.Types.Char
+Core.ClassFoo.$fFooBool2 = GHC.Types.C# 'f'
+
+Core.ClassFoo.$fFooBool1 :: GHC.Types.Char
+Core.ClassFoo.$fFooBool1 = GHC.Types.C# 't'
+
+Core.ClassFoo.$fFooBool_$cfoo :: GHC.Types.Bool -> GHC.Types.Char
+Core.ClassFoo.$fFooBool_$cfoo =
+  \ (ds :: GHC.Types.Bool) ->
+    case ds of _ {
+      GHC.Types.False -> Core.ClassFoo.$fFooBool2;
+      GHC.Types.True -> Core.ClassFoo.$fFooBool1
+    }
+
+Core.ClassFoo.$fFooBool :: Core.ClassFoo.Foo GHC.Types.Bool
+Core.ClassFoo.$fFooBool =
+  Core.ClassFoo.$fFooBool_$cfoo
+  `cast` (Sym (Core.ClassFoo.NTCo:Foo[0] <GHC.Types.Bool>_N)
+          :: (GHC.Types.Bool -> GHC.Types.Char)
+               ~#
+             Core.ClassFoo.Foo GHC.Types.Bool)
+
+
+
+*** Core Linted result of Tidy Core:
+*** CorePrep:
+
+==================== CorePrep ====================
+Result size of CorePrep = {terms: 22, types: 17, coercions: 5}
+
+Core.ClassFoo.foo
+  :: forall a. Core.ClassFoo.Foo a => a -> GHC.Types.Char
+Core.ClassFoo.foo =
+  \ (@ a) (tpl :: Core.ClassFoo.Foo a) ->
+    tpl
+    `cast` (Core.ClassFoo.NTCo:Foo[0] <a>_N
+            :: Core.ClassFoo.Foo a ~# (a -> GHC.Types.Char))
+
+Core.ClassFoo.$fFooBool2 :: GHC.Types.Char
+Core.ClassFoo.$fFooBool2 = GHC.Types.C# 'f'
+
+Core.ClassFoo.$fFooBool1 :: GHC.Types.Char
+Core.ClassFoo.$fFooBool1 = GHC.Types.C# 't'
+
+Core.ClassFoo.$fFooBool_$cfoo :: GHC.Types.Bool -> GHC.Types.Char
+Core.ClassFoo.$fFooBool_$cfoo =
+  \ (ds :: GHC.Types.Bool) ->
+    case ds of _ {
+      GHC.Types.False -> Core.ClassFoo.$fFooBool2;
+      GHC.Types.True -> Core.ClassFoo.$fFooBool1
+    }
+
+Core.ClassFoo.$fFooBool :: Core.ClassFoo.Foo GHC.Types.Bool
+Core.ClassFoo.$fFooBool =
+  (\ (eta :: GHC.Types.Bool) -> Core.ClassFoo.$fFooBool_$cfoo eta)
+  `cast` (Sym (Core.ClassFoo.NTCo:Foo[0] <GHC.Types.Bool>_N)
+          :: (GHC.Types.Bool -> GHC.Types.Char)
+               ~#
+             Core.ClassFoo.Foo GHC.Types.Bool)
+
+
+
+*** Core Linted result of CorePrep:
+*** Stg2Stg:
+
+==================== STG syntax: ====================
+Core.ClassFoo.foo
+  :: forall a. Core.ClassFoo.Foo a => a -> GHC.Types.Char =
+    \r srt:SRT:[] [tpl] tpl;
+Core.ClassFoo.$fFooBool2 :: GHC.Types.Char =
+    NO_CCS GHC.Types.C#! ['f'];
+Core.ClassFoo.$fFooBool1 :: GHC.Types.Char =
+    NO_CCS GHC.Types.C#! ['t'];
+Core.ClassFoo.$fFooBool_$cfoo :: GHC.Types.Bool -> GHC.Types.Char =
+    \r srt:SRT:[] [ds]
+        case ds of _ {
+          GHC.Types.False -> Core.ClassFoo.$fFooBool2;
+          GHC.Types.True -> Core.ClassFoo.$fFooBool1;
+        };
+Core.ClassFoo.$fFooBool :: Core.ClassFoo.Foo GHC.Types.Bool =
+    \r srt:SRT:[] [eta] Core.ClassFoo.$fFooBool_$cfoo eta;
+
+
+*** CodeOutput:
+*** New CodeGen:
+*** CPSZ:
+*** CPSZ:
+*** CPSZ:
+*** CPSZ:
+*** CPSZ:
+*** CPSZ:
+*** Assembler:
+*** Deleting temp files:
+Warning: deleting non-existent /tmp/ghc3187_0/ghc3187_3.c
+Warning: deleting non-existent /tmp/ghc3187_0/ghc3187_1.s
+compile: input file src/Core/Foo.hs
+*** Checking old interface for main:Core.Foo:
+[2 of 2] Compiling Core.Foo         ( src/Core/Foo.hs, src/Core/Foo.o )
+*** Parser:
+
+==================== Parser ====================
+module Core.Foo (
+    ) where
+import Core.ClassFoo
+f :: Foo a => a -> [Char]
+f x = [foo x, foo x]
+g :: Bool -> [Char]
+g b = f b
+
+
+*** Renamer/typechecker:
+TYPE SIGNATURES
+  f :: forall a. Foo a => a -> [Char]
+  g :: Bool -> [Char]
+TYPE CONSTRUCTORS
+COERCION AXIOMS
+Dependent modules: [(Core.ClassFoo, False)]
+Dependent packages: [base, ghc-prim, integer-gmp]
+
+==================== Typechecker ====================
+AbsBinds [a] [$dFoo]
+  {Exports: [f <= f
+               <>]
+   Exported types: f :: forall a. Foo a => a -> [Char]
+   Binds: f x = [foo x, foo x]}
+AbsBinds [] []
+  {Exports: [g <= g
+               <>]
+   Exported types: g :: Bool -> [Char]
+   Binds: g b = f b}
+
+
+src/Core/Foo.hs:7:1: Warning: Defined but not used: ‘f’
+
+src/Core/Foo.hs:10:1: Warning: Defined but not used: ‘g’
+*** Desugar:
+
+==================== Desugar (after optimization) ====================
+Result size of Desugar (after optimization)
+  = {terms: 0, types: 0, coercions: 0}
+
+
+
+*** Core Linted result of Desugar (after optimization):
+*** Simplifier:
+
+==================== Simplifier ====================
+  Max iterations = 4
+  SimplMode {Phase = InitialPhase [Gentle],
+             no inline,
+             rules,
+             eta-expand,
+             no case-of-case}
+Result size of Simplifier = {terms: 0, types: 0, coercions: 0}
+
+
+
+*** Core Linted result of Simplifier:
+*** Specialise:
+
+==================== Specialise ====================
+Result size of Specialise = {terms: 0, types: 0, coercions: 0}
+
+
+
+*** Core Linted result of Specialise:
+*** Float out(FOS {Lam = Just 0, Consts = True, PAPs = False}):
+
+==================== Levels added: ====================
+
+
+
+==================== Float out(FOS {Lam = Just 0, Consts = True, PAPs = False}) ====================
+Result size of Float out(FOS {Lam = Just 0,
+                              Consts = True,
+                              PAPs = False})
+  = {terms: 0, types: 0, coercions: 0}
+
+
+
+*** Core Linted result of Float out(FOS {Lam = Just 0, Consts = True, PAPs = False}):
+*** Float inwards:
+
+==================== Float inwards ====================
+Result size of Float inwards = {terms: 0, types: 0, coercions: 0}
+
+
+
+*** Core Linted result of Float inwards:
+*** Simplifier:
+
+==================== Simplifier ====================
+  Max iterations = 4
+  SimplMode {Phase = 2 [main],
+             inline,
+             rules,
+             eta-expand,
+             case-of-case}
+Result size of Simplifier = {terms: 0, types: 0, coercions: 0}
+
+
+
+*** Core Linted result of Simplifier:
+*** Simplifier:
+
+==================== Simplifier ====================
+  Max iterations = 4
+  SimplMode {Phase = 1 [main],
+             inline,
+             rules,
+             eta-expand,
+             case-of-case}
+Result size of Simplifier = {terms: 0, types: 0, coercions: 0}
+
+
+
+*** Core Linted result of Simplifier:
+*** Simplifier:
+
+==================== Simplifier ====================
+  Max iterations = 4
+  SimplMode {Phase = 0 [main],
+             inline,
+             rules,
+             eta-expand,
+             case-of-case}
+Result size of Simplifier = {terms: 0, types: 0, coercions: 0}
+
+
+
+*** Core Linted result of Simplifier:
+*** Demand analysis:
+
+==================== Demand analysis ====================
+Result size of Demand analysis = {terms: 0, types: 0, coercions: 0}
+
+
+
+*** Core Linted result of Demand analysis:
+*** Worker Wrapper binds:
+
+==================== Worker Wrapper binds ====================
+Result size of Worker Wrapper binds
+  = {terms: 0, types: 0, coercions: 0}
+
+
+
+*** Core Linted result of Worker Wrapper binds:
+*** Simplifier:
+
+==================== Simplifier ====================
+  Max iterations = 4
+  SimplMode {Phase = 0 [post-worker-wrapper],
+             inline,
+             rules,
+             eta-expand,
+             case-of-case}
+Result size of Simplifier = {terms: 0, types: 0, coercions: 0}
+
+
+
+*** Core Linted result of Simplifier:
+*** Float out(FOS {Lam = Just 0, Consts = True, PAPs = True}):
+
+==================== Levels added: ====================
+
+
+
+==================== Float out(FOS {Lam = Just 0, Consts = True, PAPs = True}) ====================
+Result size of Float out(FOS {Lam = Just 0,
+                              Consts = True,
+                              PAPs = True})
+  = {terms: 0, types: 0, coercions: 0}
+
+
+
+*** Core Linted result of Float out(FOS {Lam = Just 0, Consts = True, PAPs = True}):
+*** Common sub-expression:
+
+==================== Common sub-expression ====================
+Result size of Common sub-expression
+  = {terms: 0, types: 0, coercions: 0}
+
+
+
+*** Core Linted result of Common sub-expression:
+*** Float inwards:
+
+==================== Float inwards ====================
+Result size of Float inwards = {terms: 0, types: 0, coercions: 0}
+
+
+
+*** Core Linted result of Float inwards:
+*** Liberate case:
+
+==================== Liberate case ====================
+Result size of Liberate case = {terms: 0, types: 0, coercions: 0}
+
+
+
+*** Core Linted result of Liberate case:
+*** Simplifier:
+
+==================== Simplifier ====================
+  Max iterations = 4
+  SimplMode {Phase = 0 [post-liberate-case],
+             inline,
+             rules,
+             eta-expand,
+             case-of-case}
+Result size of Simplifier = {terms: 0, types: 0, coercions: 0}
+
+
+
+*** Core Linted result of Simplifier:
+*** SpecConstr:
+
+==================== SpecConstr ====================
+Result size of SpecConstr = {terms: 0, types: 0, coercions: 0}
+
+
+
+*** Core Linted result of SpecConstr:
+*** Simplifier:
+
+==================== Simplifier ====================
+  Max iterations = 4
+  SimplMode {Phase = 0 [final],
+             inline,
+             rules,
+             eta-expand,
+             case-of-case}
+Result size of Simplifier = {terms: 0, types: 0, coercions: 0}
+
+
+
+*** Core Linted result of Simplifier:
+*** Tidy Core:
+
+==================== Tidy Core ====================
+Result size of Tidy Core = {terms: 0, types: 0, coercions: 0}
+
+
+
+*** Core Linted result of Tidy Core:
+*** CorePrep:
+
+==================== CorePrep ====================
+Result size of CorePrep = {terms: 0, types: 0, coercions: 0}
+
+
+
+*** Core Linted result of CorePrep:
+*** Stg2Stg:
+
+==================== STG syntax: ====================
+
+
+*** CodeOutput:
+*** New CodeGen:
+*** CPSZ:
+*** Assembler:
+Upsweep completely successful.
+*** Deleting temp files:
+Warning: deleting non-existent /tmp/ghc3187_0/ghc3187_6.c
+Warning: deleting non-existent /tmp/ghc3187_0/ghc3187_4.s
+*** Deleting temp files:
+*** Deleting temp dirs:

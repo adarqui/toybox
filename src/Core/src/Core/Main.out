@@ -1,0 +1,1351 @@
+Glasgow Haskell Compiler, Version 7.8.2, stage 2 booted by GHC version 7.4.1
+Using binary package database: /usr/lib/ghc-7.8.2/package.conf.d/package.cache
+Using binary package database: /home/d/.ghc/x86_64-linux-7.8.2/package.conf.d/package.cache
+hiding package transformers-0.3.0.0 to avoid conflict with later version transformers-0.4.1.0
+wired-in package ghc-prim mapped to ghc-prim-0.3.1.0-948744e1f99cc8bcc7c7d3ba60c7c2d8
+wired-in package integer-gmp mapped to integer-gmp-0.5.1.0-dc47f6b546fc171f67a7f7d311684a99
+wired-in package base mapped to base-4.7.0.0-018311399e3b6350d5be3a16b144df9b
+wired-in package rts mapped to builtin_rts
+wired-in package template-haskell mapped to template-haskell-2.9.0.0-dcc8c210fb02937e104bc1784d7b0f06
+wired-in package dph-seq not found.
+wired-in package dph-par not found.
+hiding package transformers-0.3.0.0 to avoid conflict with later version transformers-0.4.1.0
+wired-in package ghc-prim mapped to ghc-prim-0.3.1.0-948744e1f99cc8bcc7c7d3ba60c7c2d8
+wired-in package integer-gmp mapped to integer-gmp-0.5.1.0-dc47f6b546fc171f67a7f7d311684a99
+wired-in package base mapped to base-4.7.0.0-018311399e3b6350d5be3a16b144df9b
+wired-in package rts mapped to builtin_rts
+wired-in package template-haskell mapped to template-haskell-2.9.0.0-dcc8c210fb02937e104bc1784d7b0f06
+wired-in package dph-seq not found.
+wired-in package dph-par not found.
+*** Chasing dependencies:
+Chasing modules from: *src/Core/Main.hs
+Stable obj: []
+Stable BCO: []
+Ready for upsweep
+  [NONREC
+      ModSummary {
+         ms_hs_date = 2014-06-22 17:24:29.07518952 UTC
+         ms_mod = main:Main,
+         ms_textual_imps = [import (implicit) Prelude,
+                            import System.Environment]
+         ms_srcimps = []
+      }]
+*** Deleting temp files:
+compile: input file src/Core/Main.hs
+Created temporary directory: /tmp/ghc3197_0
+*** Checking old interface for main:Main:
+[1 of 1] Compiling Main             ( src/Core/Main.hs, src/Core/Main.o )
+*** Parser:
+
+==================== Parser ====================
+import System.Environment
+main :: IO ()
+main = do { getArgs >>= print }
+
+
+*** Renamer/typechecker:
+TYPE SIGNATURES
+  :Main.main :: IO ()
+  main :: IO ()
+TYPE CONSTRUCTORS
+COERCION AXIOMS
+Dependent modules: []
+Dependent packages: [base, ghc-prim, integer-gmp]
+
+==================== Typechecker ====================
+AbsBinds [] []
+  {Exports: [main <= main
+               <>]
+   Exported types: main :: IO ()
+   Binds: main = do { (>>=) getArgs print }}
+:Main.main = GHC.TopHandler.runMainIO main
+
+*** Desugar:
+
+==================== Desugar (after optimization) ====================
+Result size of Desugar (after optimization)
+  = {terms: 13, types: 17, coercions: 0}
+
+$dShow :: GHC.Show.Show [GHC.Types.Char]
+$dShow = GHC.Show.$fShow[] GHC.Show.$fShowChar
+
+Main.main :: GHC.Types.IO ()
+Main.main =
+  GHC.Base.>>=
+    GHC.Base.$fMonadIO
+    System.Environment.getArgs
+    (System.IO.print (GHC.Show.$fShow[] $dShow))
+
+:Main.main :: GHC.Types.IO ()
+:Main.main = GHC.TopHandler.runMainIO Main.main
+
+
+
+*** Core Linted result of Desugar (after optimization):
+*** Simplifier:
+SimplBind [$dShow{v} [lid]]
+SimplBind [main:Main.main{v r8} [lidx]]
+SimplBind [main::Main.main{v 01D} [lidx]]
+Result size of Simplifier iteration=1
+  = {terms: 20, types: 28, coercions: 10}
+*** Core Linted result of Simplifier:
+SimplBind [a{v} [lid]]
+SimplBind [a{v} [lid]]
+SimplBind [a{v} [lid]]
+SimplBind [main:Main.main{v r8} [lidx]]
+SimplBind [main::Main.main{v 01D} [lidx]]
+Result size of Simplifier iteration=2
+  = {terms: 24, types: 40, coercions: 10}
+*** Core Linted result of Simplifier:
+SimplBind [a{v} [lid]]
+SimplBind [a{v} [lid]]
+SimplBind [a{v} [lid]]
+SimplBind [a{v} [lid]]
+SimplBind [main:Main.main{v r8} [lidx]]
+SimplBind [a{v} [lid]]
+SimplBind [main::Main.main{v 01D} [lidx]]
+Result size of Simplifier iteration=3
+  = {terms: 18, types: 29, coercions: 10}
+*** Core Linted result of Simplifier:
+SimplBind [a{v} [lid]]
+SimplBind [main:Main.main{v r8} [lidx]]
+SimplBind [a{v} [lid]]
+SimplBind [main::Main.main{v 01D} [lidx]]
+
+==================== Simplifier ====================
+  Max iterations = 4
+  SimplMode {Phase = InitialPhase [Gentle],
+             no inline,
+             rules,
+             eta-expand,
+             no case-of-case}
+Result size of Simplifier = {terms: 18, types: 29, coercions: 10}
+
+a :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+a =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    ((GHC.Base.bindIO
+        System.Environment.getArgs
+        (System.IO.print
+           (GHC.Show.$fShow[] (GHC.Show.$fShow[] GHC.Show.$fShowChar))))
+     `cast` (GHC.Types.NTCo:IO[0] <()>_R
+             :: GHC.Types.IO ()
+                  ~#
+                (GHC.Prim.State# GHC.Prim.RealWorld
+                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))))
+      eta
+
+Main.main :: GHC.Types.IO ()
+Main.main =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+a :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+a =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    ((GHC.TopHandler.runMainIO Main.main)
+     `cast` (GHC.Types.NTCo:IO[0] <()>_R
+             :: GHC.Types.IO ()
+                  ~#
+                (GHC.Prim.State# GHC.Prim.RealWorld
+                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))))
+      eta
+
+:Main.main :: GHC.Types.IO ()
+:Main.main =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+
+
+*** Core Linted result of Simplifier:
+*** Specialise:
+
+==================== Specialise ====================
+Result size of Specialise = {terms: 18, types: 29, coercions: 10}
+
+a :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+a =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    ((GHC.Base.bindIO
+        System.Environment.getArgs
+        (System.IO.print
+           (GHC.Show.$fShow[] (GHC.Show.$fShow[] GHC.Show.$fShowChar))))
+     `cast` (GHC.Types.NTCo:IO[0] <()>_R
+             :: GHC.Types.IO ()
+                  ~#
+                (GHC.Prim.State# GHC.Prim.RealWorld
+                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))))
+      eta
+
+Main.main :: GHC.Types.IO ()
+Main.main =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+a :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+a =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    ((GHC.TopHandler.runMainIO Main.main)
+     `cast` (GHC.Types.NTCo:IO[0] <()>_R
+             :: GHC.Types.IO ()
+                  ~#
+                (GHC.Prim.State# GHC.Prim.RealWorld
+                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))))
+      eta
+
+:Main.main :: GHC.Types.IO ()
+:Main.main =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+
+
+*** Core Linted result of Specialise:
+*** Float out(FOS {Lam = Just 0, Consts = True, PAPs = False}):
+
+==================== Levels added: ====================
+<a,<0,0>>
+<a,<0,0>> =
+  \ <eta,<0,1>> ->
+    ((GHC.Base.bindIO
+        System.Environment.getArgs
+        (let {
+           <lvl,F<0,0>>
+           <lvl,F<0,0>> =
+             System.IO.print
+               (let {
+                  <lvl,F<0,0>>
+                  <lvl,F<0,0>> =
+                    GHC.Show.$fShow[]
+                      (let {
+                         <lvl,F<0,0>>
+                         <lvl,F<0,0>> = GHC.Show.$fShow[] GHC.Show.$fShowChar } in
+                       lvl) } in
+                lvl) } in
+         lvl))
+     `cast` (GHC.Types.NTCo:IO[0] <()>_R
+             :: GHC.Types.IO ()
+                  ~#
+                (GHC.Prim.State# GHC.Prim.RealWorld
+                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))))
+      eta
+<Main.main,<0,0>>
+<Main.main,<0,0>> =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+<a,<0,0>>
+<a,<0,0>> =
+  \ <eta,<0,1>> ->
+    ((GHC.TopHandler.runMainIO Main.main)
+     `cast` (GHC.Types.NTCo:IO[0] <()>_R
+             :: GHC.Types.IO ()
+                  ~#
+                (GHC.Prim.State# GHC.Prim.RealWorld
+                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))))
+      eta
+<:Main.main,<0,0>>
+<:Main.main,<0,0>> =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+
+
+==================== Float out(FOS {Lam = Just 0, Consts = True, PAPs = False}) ====================
+Result size of Float out(FOS {Lam = Just 0,
+                              Consts = True,
+                              PAPs = False})
+  = {terms: 24, types: 40, coercions: 10}
+
+lvl :: GHC.Show.Show [GHC.Types.Char]
+lvl = GHC.Show.$fShow[] GHC.Show.$fShowChar
+
+lvl :: GHC.Show.Show [[GHC.Types.Char]]
+lvl = GHC.Show.$fShow[] lvl
+
+lvl :: [GHC.Base.String] -> GHC.Types.IO ()
+lvl = System.IO.print lvl
+
+a :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+a =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    ((GHC.Base.bindIO System.Environment.getArgs lvl)
+     `cast` (GHC.Types.NTCo:IO[0] <()>_R
+             :: GHC.Types.IO ()
+                  ~#
+                (GHC.Prim.State# GHC.Prim.RealWorld
+                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))))
+      eta
+
+Main.main :: GHC.Types.IO ()
+Main.main =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+a :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+a =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    ((GHC.TopHandler.runMainIO Main.main)
+     `cast` (GHC.Types.NTCo:IO[0] <()>_R
+             :: GHC.Types.IO ()
+                  ~#
+                (GHC.Prim.State# GHC.Prim.RealWorld
+                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))))
+      eta
+
+:Main.main :: GHC.Types.IO ()
+:Main.main =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+
+
+*** Core Linted result of Float out(FOS {Lam = Just 0, Consts = True, PAPs = False}):
+*** Float inwards:
+
+==================== Float inwards ====================
+Result size of Float inwards
+  = {terms: 24, types: 40, coercions: 10}
+
+lvl :: GHC.Show.Show [GHC.Types.Char]
+lvl = GHC.Show.$fShow[] GHC.Show.$fShowChar
+
+lvl :: GHC.Show.Show [[GHC.Types.Char]]
+lvl = GHC.Show.$fShow[] lvl
+
+lvl :: [GHC.Base.String] -> GHC.Types.IO ()
+lvl = System.IO.print lvl
+
+a :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+a =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    ((GHC.Base.bindIO System.Environment.getArgs lvl)
+     `cast` (GHC.Types.NTCo:IO[0] <()>_R
+             :: GHC.Types.IO ()
+                  ~#
+                (GHC.Prim.State# GHC.Prim.RealWorld
+                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))))
+      eta
+
+Main.main :: GHC.Types.IO ()
+Main.main =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+a :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+a =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    ((GHC.TopHandler.runMainIO Main.main)
+     `cast` (GHC.Types.NTCo:IO[0] <()>_R
+             :: GHC.Types.IO ()
+                  ~#
+                (GHC.Prim.State# GHC.Prim.RealWorld
+                 -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))))
+      eta
+
+:Main.main :: GHC.Types.IO ()
+:Main.main =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+
+
+*** Core Linted result of Float inwards:
+*** Simplifier:
+SimplBind [lvl{v} [lid]]
+SimplBind [lvl{v} [lid]]
+SimplBind [lvl{v} [lid]]
+SimplBind [a{v} [lid]]
+SimplBind [main:Main.main{v r8} [lidx]]
+SimplBind [a{v} [lid]]
+SimplBind [main::Main.main{v 01D} [lidx]]
+Result size of Simplifier iteration=1
+  = {terms: 23, types: 33, coercions: 9}
+*** Core Linted result of Simplifier:
+SimplBind [a{v} [lid]]
+SimplBind [main:Main.main{v r8} [lidx]]
+SimplBind [a{v} [lid]]
+SimplBind [main::Main.main{v 01D} [lidx]]
+
+==================== Simplifier ====================
+  Max iterations = 4
+  SimplMode {Phase = 2 [main],
+             inline,
+             rules,
+             eta-expand,
+             case-of-case}
+Result size of Simplifier = {terms: 23, types: 33, coercions: 9}
+
+a :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+a =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    case System.Environment.getArgs1 eta of _ { (# ipv, ipv1 #) ->
+    GHC.IO.Handle.Text.hPutStr2
+      GHC.IO.Handle.FD.stdout
+      (GHC.Show.showList__
+         GHC.Show.$fShowChar_$cshowList ipv1 (GHC.Types.[]))
+      GHC.Types.True
+      ipv
+    }
+
+Main.main :: GHC.Types.IO ()
+Main.main =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+a :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+a =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    GHC.TopHandler.runMainIO1
+      (a
+       `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+               :: (GHC.Prim.State# GHC.Prim.RealWorld
+                   -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+                    ~#
+                  GHC.Types.IO ()))
+      eta
+
+:Main.main :: GHC.Types.IO ()
+:Main.main =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+
+
+*** Core Linted result of Simplifier:
+*** Simplifier:
+SimplBind [a{v} [lid]]
+SimplBind [main:Main.main{v r8} [lidx]]
+SimplBind [a{v} [lid]]
+SimplBind [main::Main.main{v 01D} [lidx]]
+
+==================== Simplifier ====================
+  Max iterations = 4
+  SimplMode {Phase = 1 [main],
+             inline,
+             rules,
+             eta-expand,
+             case-of-case}
+Result size of Simplifier = {terms: 23, types: 33, coercions: 9}
+
+a :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+a =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    case System.Environment.getArgs1 eta of _ { (# ipv, ipv1 #) ->
+    GHC.IO.Handle.Text.hPutStr2
+      GHC.IO.Handle.FD.stdout
+      (GHC.Show.showList__
+         GHC.Show.$fShowChar_$cshowList ipv1 (GHC.Types.[]))
+      GHC.Types.True
+      ipv
+    }
+
+Main.main :: GHC.Types.IO ()
+Main.main =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+a :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+a =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    GHC.TopHandler.runMainIO1
+      (a
+       `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+               :: (GHC.Prim.State# GHC.Prim.RealWorld
+                   -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+                    ~#
+                  GHC.Types.IO ()))
+      eta
+
+:Main.main :: GHC.Types.IO ()
+:Main.main =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+
+
+*** Core Linted result of Simplifier:
+*** Simplifier:
+SimplBind [a{v} [lid]]
+SimplBind [main:Main.main{v r8} [lidx]]
+SimplBind [a{v} [lid]]
+SimplBind [main::Main.main{v 01D} [lidx]]
+
+==================== Simplifier ====================
+  Max iterations = 4
+  SimplMode {Phase = 0 [main],
+             inline,
+             rules,
+             eta-expand,
+             case-of-case}
+Result size of Simplifier = {terms: 23, types: 33, coercions: 9}
+
+a :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+a =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    case System.Environment.getArgs1 eta of _ { (# ipv, ipv1 #) ->
+    GHC.IO.Handle.Text.hPutStr2
+      GHC.IO.Handle.FD.stdout
+      (GHC.Show.showList__
+         GHC.Show.$fShowChar_$cshowList ipv1 (GHC.Types.[]))
+      GHC.Types.True
+      ipv
+    }
+
+Main.main :: GHC.Types.IO ()
+Main.main =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+a :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+a =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    GHC.TopHandler.runMainIO1
+      (a
+       `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+               :: (GHC.Prim.State# GHC.Prim.RealWorld
+                   -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+                    ~#
+                  GHC.Types.IO ()))
+      eta
+
+:Main.main :: GHC.Types.IO ()
+:Main.main =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+
+
+*** Core Linted result of Simplifier:
+*** Demand analysis:
+
+==================== Demand analysis ====================
+Result size of Demand analysis
+  = {terms: 23, types: 33, coercions: 9}
+
+a :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+a =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    case System.Environment.getArgs1 eta of _ { (# ipv, ipv1 #) ->
+    GHC.IO.Handle.Text.hPutStr2
+      GHC.IO.Handle.FD.stdout
+      (GHC.Show.showList__
+         GHC.Show.$fShowChar_$cshowList ipv1 (GHC.Types.[]))
+      GHC.Types.True
+      ipv
+    }
+
+Main.main :: GHC.Types.IO ()
+Main.main =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+a :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+a =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    GHC.TopHandler.runMainIO1
+      (a
+       `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+               :: (GHC.Prim.State# GHC.Prim.RealWorld
+                   -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+                    ~#
+                  GHC.Types.IO ()))
+      eta
+
+:Main.main :: GHC.Types.IO ()
+:Main.main =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+
+
+*** Core Linted result of Demand analysis:
+*** Worker Wrapper binds:
+
+==================== Worker Wrapper binds ====================
+Result size of Worker Wrapper binds
+  = {terms: 23, types: 33, coercions: 9}
+
+a :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+a =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    case System.Environment.getArgs1 eta of _ { (# ipv, ipv1 #) ->
+    GHC.IO.Handle.Text.hPutStr2
+      GHC.IO.Handle.FD.stdout
+      (GHC.Show.showList__
+         GHC.Show.$fShowChar_$cshowList ipv1 (GHC.Types.[]))
+      GHC.Types.True
+      ipv
+    }
+
+Main.main :: GHC.Types.IO ()
+Main.main =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+a :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+a =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    GHC.TopHandler.runMainIO1
+      (a
+       `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+               :: (GHC.Prim.State# GHC.Prim.RealWorld
+                   -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+                    ~#
+                  GHC.Types.IO ()))
+      eta
+
+:Main.main :: GHC.Types.IO ()
+:Main.main =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+
+
+*** Core Linted result of Worker Wrapper binds:
+*** Simplifier:
+SimplBind [a{v} [lid]]
+SimplBind [main:Main.main{v r8} [lidx]]
+SimplBind [a{v} [lid]]
+SimplBind [main::Main.main{v 01D} [lidx]]
+
+==================== Simplifier ====================
+  Max iterations = 4
+  SimplMode {Phase = 0 [post-worker-wrapper],
+             inline,
+             rules,
+             eta-expand,
+             case-of-case}
+Result size of Simplifier = {terms: 23, types: 33, coercions: 9}
+
+a :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+a =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    case System.Environment.getArgs1 eta of _ { (# ipv, ipv1 #) ->
+    GHC.IO.Handle.Text.hPutStr2
+      GHC.IO.Handle.FD.stdout
+      (GHC.Show.showList__
+         GHC.Show.$fShowChar_$cshowList ipv1 (GHC.Types.[]))
+      GHC.Types.True
+      ipv
+    }
+
+Main.main :: GHC.Types.IO ()
+Main.main =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+a :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+a =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    GHC.TopHandler.runMainIO1
+      (a
+       `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+               :: (GHC.Prim.State# GHC.Prim.RealWorld
+                   -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+                    ~#
+                  GHC.Types.IO ()))
+      eta
+
+:Main.main :: GHC.Types.IO ()
+:Main.main =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+
+
+*** Core Linted result of Simplifier:
+*** Float out(FOS {Lam = Just 0, Consts = True, PAPs = True}):
+
+==================== Levels added: ====================
+<a,<0,0>>
+<a,<0,0>> =
+  \ <eta,<0,1>> ->
+    case System.Environment.getArgs1 eta
+    of <ds1,<0,2>> { (# <ipv,<0,2>>, <ipv1,<0,2>> #) ->
+    GHC.IO.Handle.Text.hPutStr2
+      GHC.IO.Handle.FD.stdout
+      (GHC.Show.showList__
+         GHC.Show.$fShowChar_$cshowList ipv1 (GHC.Types.[]))
+      GHC.Types.True
+      ipv
+    }
+<Main.main,<0,0>>
+<Main.main,<0,0>> =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+<a,<0,0>>
+<a,<0,0>> =
+  \ <eta,<0,1>> ->
+    GHC.TopHandler.runMainIO1
+      (a
+       `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+               :: (GHC.Prim.State# GHC.Prim.RealWorld
+                   -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+                    ~#
+                  GHC.Types.IO ()))
+      eta
+<:Main.main,<0,0>>
+<:Main.main,<0,0>> =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+
+
+==================== Float out(FOS {Lam = Just 0, Consts = True, PAPs = True}) ====================
+Result size of Float out(FOS {Lam = Just 0,
+                              Consts = True,
+                              PAPs = True})
+  = {terms: 23, types: 33, coercions: 9}
+
+a :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+a =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    case System.Environment.getArgs1 eta of _ { (# ipv, ipv1 #) ->
+    GHC.IO.Handle.Text.hPutStr2
+      GHC.IO.Handle.FD.stdout
+      (GHC.Show.showList__
+         GHC.Show.$fShowChar_$cshowList ipv1 (GHC.Types.[]))
+      GHC.Types.True
+      ipv
+    }
+
+Main.main :: GHC.Types.IO ()
+Main.main =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+a :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+a =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    GHC.TopHandler.runMainIO1
+      (a
+       `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+               :: (GHC.Prim.State# GHC.Prim.RealWorld
+                   -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+                    ~#
+                  GHC.Types.IO ()))
+      eta
+
+:Main.main :: GHC.Types.IO ()
+:Main.main =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+
+
+*** Core Linted result of Float out(FOS {Lam = Just 0, Consts = True, PAPs = True}):
+*** Common sub-expression:
+
+==================== Common sub-expression ====================
+Result size of Common sub-expression
+  = {terms: 23, types: 33, coercions: 9}
+
+a :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+a =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    case System.Environment.getArgs1 eta of ds1 { (# ipv, ipv1 #) ->
+    GHC.IO.Handle.Text.hPutStr2
+      GHC.IO.Handle.FD.stdout
+      (GHC.Show.showList__
+         GHC.Show.$fShowChar_$cshowList ipv1 (GHC.Types.[]))
+      GHC.Types.True
+      ipv
+    }
+
+Main.main :: GHC.Types.IO ()
+Main.main =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+a :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+a =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    GHC.TopHandler.runMainIO1
+      (a
+       `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+               :: (GHC.Prim.State# GHC.Prim.RealWorld
+                   -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+                    ~#
+                  GHC.Types.IO ()))
+      eta
+
+:Main.main :: GHC.Types.IO ()
+:Main.main =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+
+
+*** Core Linted result of Common sub-expression:
+*** Float inwards:
+
+==================== Float inwards ====================
+Result size of Float inwards = {terms: 23, types: 33, coercions: 9}
+
+a :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+a =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    case System.Environment.getArgs1 eta of ds1 { (# ipv, ipv1 #) ->
+    GHC.IO.Handle.Text.hPutStr2
+      GHC.IO.Handle.FD.stdout
+      (GHC.Show.showList__
+         GHC.Show.$fShowChar_$cshowList ipv1 (GHC.Types.[]))
+      GHC.Types.True
+      ipv
+    }
+
+Main.main :: GHC.Types.IO ()
+Main.main =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+a :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+a =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    GHC.TopHandler.runMainIO1
+      (a
+       `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+               :: (GHC.Prim.State# GHC.Prim.RealWorld
+                   -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+                    ~#
+                  GHC.Types.IO ()))
+      eta
+
+:Main.main :: GHC.Types.IO ()
+:Main.main =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+
+
+*** Core Linted result of Float inwards:
+*** Liberate case:
+
+==================== Liberate case ====================
+Result size of Liberate case = {terms: 23, types: 33, coercions: 9}
+
+a :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+a =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    case System.Environment.getArgs1 eta of ds1 { (# ipv, ipv1 #) ->
+    GHC.IO.Handle.Text.hPutStr2
+      GHC.IO.Handle.FD.stdout
+      (GHC.Show.showList__
+         GHC.Show.$fShowChar_$cshowList ipv1 (GHC.Types.[]))
+      GHC.Types.True
+      ipv
+    }
+
+Main.main :: GHC.Types.IO ()
+Main.main =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+a :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+a =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    GHC.TopHandler.runMainIO1
+      (a
+       `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+               :: (GHC.Prim.State# GHC.Prim.RealWorld
+                   -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+                    ~#
+                  GHC.Types.IO ()))
+      eta
+
+:Main.main :: GHC.Types.IO ()
+:Main.main =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+
+
+*** Core Linted result of Liberate case:
+*** Simplifier:
+SimplBind [a{v} [lid]]
+SimplBind [main:Main.main{v r8} [lidx]]
+SimplBind [a{v} [lid]]
+SimplBind [main::Main.main{v 01D} [lidx]]
+
+==================== Simplifier ====================
+  Max iterations = 4
+  SimplMode {Phase = 0 [post-liberate-case],
+             inline,
+             rules,
+             eta-expand,
+             case-of-case}
+Result size of Simplifier = {terms: 23, types: 33, coercions: 9}
+
+a :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+a =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    case System.Environment.getArgs1 eta of _ { (# ipv, ipv1 #) ->
+    GHC.IO.Handle.Text.hPutStr2
+      GHC.IO.Handle.FD.stdout
+      (GHC.Show.showList__
+         GHC.Show.$fShowChar_$cshowList ipv1 (GHC.Types.[]))
+      GHC.Types.True
+      ipv
+    }
+
+Main.main :: GHC.Types.IO ()
+Main.main =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+a :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+a =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    GHC.TopHandler.runMainIO1
+      (a
+       `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+               :: (GHC.Prim.State# GHC.Prim.RealWorld
+                   -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+                    ~#
+                  GHC.Types.IO ()))
+      eta
+
+:Main.main :: GHC.Types.IO ()
+:Main.main =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+
+
+*** Core Linted result of Simplifier:
+*** SpecConstr:
+
+==================== SpecConstr ====================
+Result size of SpecConstr = {terms: 23, types: 33, coercions: 9}
+
+a :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+a =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    case System.Environment.getArgs1 eta of _ { (# ipv, ipv1 #) ->
+    GHC.IO.Handle.Text.hPutStr2
+      GHC.IO.Handle.FD.stdout
+      (GHC.Show.showList__
+         GHC.Show.$fShowChar_$cshowList ipv1 (GHC.Types.[]))
+      GHC.Types.True
+      ipv
+    }
+
+Main.main :: GHC.Types.IO ()
+Main.main =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+a :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+a =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    GHC.TopHandler.runMainIO1
+      (a
+       `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+               :: (GHC.Prim.State# GHC.Prim.RealWorld
+                   -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+                    ~#
+                  GHC.Types.IO ()))
+      eta
+
+:Main.main :: GHC.Types.IO ()
+:Main.main =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+
+
+*** Core Linted result of SpecConstr:
+*** Simplifier:
+SimplBind [a{v} [lid]]
+SimplBind [main:Main.main{v r8} [lidx]]
+SimplBind [a{v} [lid]]
+SimplBind [main::Main.main{v 01D} [lidx]]
+
+==================== Simplifier ====================
+  Max iterations = 4
+  SimplMode {Phase = 0 [final],
+             inline,
+             rules,
+             eta-expand,
+             case-of-case}
+Result size of Simplifier = {terms: 23, types: 33, coercions: 9}
+
+a :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+a =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    case System.Environment.getArgs1 eta of _ { (# ipv, ipv1 #) ->
+    GHC.IO.Handle.Text.hPutStr2
+      GHC.IO.Handle.FD.stdout
+      (GHC.Show.showList__
+         GHC.Show.$fShowChar_$cshowList ipv1 (GHC.Types.[]))
+      GHC.Types.True
+      ipv
+    }
+
+Main.main :: GHC.Types.IO ()
+Main.main =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+a :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+a =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    GHC.TopHandler.runMainIO1
+      (a
+       `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+               :: (GHC.Prim.State# GHC.Prim.RealWorld
+                   -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+                    ~#
+                  GHC.Types.IO ()))
+      eta
+
+:Main.main :: GHC.Types.IO ()
+:Main.main =
+  a
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+
+
+*** Core Linted result of Simplifier:
+*** Tidy Core:
+
+==================== Tidy Core ====================
+Result size of Tidy Core = {terms: 23, types: 33, coercions: 9}
+
+Main.main1
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+Main.main1 =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    case System.Environment.getArgs1 eta of _ { (# ipv, ipv1 #) ->
+    GHC.IO.Handle.Text.hPutStr2
+      GHC.IO.Handle.FD.stdout
+      (GHC.Show.showList__
+         GHC.Show.$fShowChar_$cshowList ipv1 (GHC.Types.[]))
+      GHC.Types.True
+      ipv
+    }
+
+Main.main :: GHC.Types.IO ()
+Main.main =
+  Main.main1
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+Main.main2
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+Main.main2 =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    GHC.TopHandler.runMainIO1
+      (Main.main1
+       `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+               :: (GHC.Prim.State# GHC.Prim.RealWorld
+                   -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+                    ~#
+                  GHC.Types.IO ()))
+      eta
+
+:Main.main :: GHC.Types.IO ()
+:Main.main =
+  Main.main2
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+
+
+*** Core Linted result of Tidy Core:
+*** CorePrep:
+
+==================== CorePrep ====================
+Result size of CorePrep = {terms: 29, types: 38, coercions: 9}
+
+Main.main1
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+Main.main1 =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    case System.Environment.getArgs1 eta of _ { (# ipv, ipv1 #) ->
+    let {
+      sat :: GHC.Base.String
+      sat =
+        GHC.Show.showList__
+          GHC.Show.$fShowChar_$cshowList ipv1 (GHC.Types.[]) } in
+    GHC.IO.Handle.Text.hPutStr2
+      GHC.IO.Handle.FD.stdout sat GHC.Types.True ipv
+    }
+
+Main.main :: GHC.Types.IO ()
+Main.main =
+  (\ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) -> Main.main1 eta)
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+Main.main2
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+Main.main2 =
+  \ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+    GHC.TopHandler.runMainIO1
+      (Main.main1
+       `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+               :: (GHC.Prim.State# GHC.Prim.RealWorld
+                   -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+                    ~#
+                  GHC.Types.IO ()))
+      eta
+
+:Main.main :: GHC.Types.IO ()
+:Main.main =
+  (\ (eta :: GHC.Prim.State# GHC.Prim.RealWorld) -> Main.main2 eta)
+  `cast` (Sym (GHC.Types.NTCo:IO[0] <()>_R)
+          :: (GHC.Prim.State# GHC.Prim.RealWorld
+              -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #))
+               ~#
+             GHC.Types.IO ())
+
+
+
+*** Core Linted result of CorePrep:
+*** Stg2Stg:
+
+==================== STG syntax: ====================
+Main.main1
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #) =
+    \r srt:SRT:[(r1, GHC.Show.$fShowChar_$cshowList),
+                (r3, GHC.IO.Handle.FD.stdout), (r4, GHC.IO.Handle.Text.hPutStr2),
+                (r5, System.Environment.getArgs1)] [eta]
+        case System.Environment.getArgs1 eta of _ {
+          (#,#) ipv ipv1 ->
+              let {
+                sat :: GHC.Base.String =
+                    \s srt:SRT:[(r1, GHC.Show.$fShowChar_$cshowList)] []
+                        GHC.Show.showList__
+                            GHC.Show.$fShowChar_$cshowList ipv1 GHC.Types.[];
+              } in 
+                GHC.IO.Handle.Text.hPutStr2
+                    GHC.IO.Handle.FD.stdout sat GHC.Types.True ipv;
+        };
+Main.main :: GHC.Types.IO () =
+    \r srt:SRT:[(r7, Main.main1)] [eta] Main.main1 eta;
+Main.main2
+  :: GHC.Prim.State# GHC.Prim.RealWorld
+     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #) =
+    \r srt:SRT:[(r0, GHC.TopHandler.runMainIO1),
+                (r7, Main.main1)] [eta]
+        GHC.TopHandler.runMainIO1 Main.main1 eta;
+:Main.main :: GHC.Types.IO () =
+    \r srt:SRT:[(r3JJ, Main.main2)] [eta] Main.main2 eta;
+
+
+*** CodeOutput:
+*** New CodeGen:
+*** CPSZ:
+*** CPSZ:
+*** CPSZ:
+*** CPSZ:
+*** CPSZ:
+*** Assembler:
+Upsweep completely successful.
+*** Deleting temp files:
+Warning: deleting non-existent /tmp/ghc3197_0/ghc3197_3.c
+Warning: deleting non-existent /tmp/ghc3197_0/ghc3197_1.s
+*** Deleting temp files:
+*** Deleting temp dirs:

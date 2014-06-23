@@ -1,0 +1,4 @@
+%module main:CoreziFn1
+  main:CoreziFn1.fn1 :: ghczmprim:GHCziTypes.Int ->
+                        ghczmprim:GHCziTypes.Int =
+    \ (xarU::ghczmprim:GHCziTypes.Int) -> xarU;

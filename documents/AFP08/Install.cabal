@@ -1,4 +1,4 @@
-name:                AFP08-notes-examples
+name:                AFP08
 version:             0.1.0.0
 synopsis:            Some examples/exercises from http://research.microsoft.com/en-us/um/people/simonpj/papers/parallel/AFP08-notes.pdf
 homepage:            https://github.com/adarqui/AFP08-notes-examples
@@ -11,6 +11,11 @@ cabal-version:       >=1.8
 library
  exposed-modules:
   AFP08
+  AFP08.Argv
+  AFP08.Elapsed
+  AFP08.Fib
+  AFP08.Euler
+  AFP08.Misc
  build-depends: base ==4.7.*, old-time, parallel, random
  GHC-Options: -Wall
  hs-source-dirs: src

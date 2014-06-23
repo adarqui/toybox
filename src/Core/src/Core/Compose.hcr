@@ -1,0 +1,11 @@
+%module main:CoreziCompose
+  main:CoreziCompose.compose :: %forall barN carO aarP . (barN ->
+                                                          carO)
+                                                         -> (aarP -> barN) -> aarP -> carO =
+    \ @ baKc
+      @ caKd
+      @ aaKe
+      (farQ::baKc -> caKd)
+      (garR::aaKe -> baKc)
+      (xarS::aaKe) ->
+        farQ (garR xarS);

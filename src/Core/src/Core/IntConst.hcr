@@ -1,0 +1,6 @@
+%module main:CoreziIntConst
+  main:CoreziIntConst.cst :: ghczmprim:GHCziTypes.Int ->
+                             ghczmprim:GHCziTypes.Int -> ghczmprim:GHCziTypes.Int =
+    \ (xarU::ghczmprim:GHCziTypes.Int)
+      (yarV::ghczmprim:GHCziTypes.Int) ->
+        xarU;

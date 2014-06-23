@@ -5,7 +5,8 @@ module AFP08.Argv (
  usage,
  launch'fib'euler'sum,
  launch'fib'euler'map,
- launch'quicksort'1
+ launch'quicksort'1,
+ launch
 ) where
 
 import AFP08.Elapsed
@@ -70,3 +71,7 @@ launch'quicksort'1 msg fn = do
    elapsed'Show msg (fn x' y' z' `pseq` return ())
   _ -> do
    usage $ msg ++ " <x> <y> <z>"
+
+launch :: String -> a -> IO ()
+launch msg fn = do
+ elapsed'Show msg (fn `pseq` return ())

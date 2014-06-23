@@ -1,0 +1,49 @@
+%module main:Main
+  main:Main.main2 :: ghczmprim:GHCziTypes.ZMZN
+                     ghczmprim:GHCziTypes.Char =
+    %case (ghczmprim:GHCziTypes.ZMZN
+           ghczmprim:GHCziTypes.Char) (base:GHCziShow.zdwshowSignedInt
+                                       (0::ghczmprim:GHCziPrim.Intzh)
+                                       (41::ghczmprim:GHCziPrim.Intzh)
+                                       (ghczmprim:GHCziTypes.ZMZN @ ghczmprim:GHCziTypes.Char))
+    %of (ww4a1jL::ghczmprim:GHCziPrim.Z2H
+                  ghczmprim:GHCziTypes.Char
+                  (ghczmprim:GHCziTypes.ZMZN ghczmprim:GHCziTypes.Char))
+      {ghczmprim:GHCziPrim.Z2H
+       (ww5a1jN::ghczmprim:GHCziTypes.Char)
+       (ww6a1jO::ghczmprim:GHCziTypes.ZMZN ghczmprim:GHCziTypes.Char) ->
+         ghczmprim:GHCziTypes.ZC @ ghczmprim:GHCziTypes.Char ww5a1jN
+         ww6a1jO};
+  main:Main.main1 :: (ghczmprim:GHCziPrim.Statezh
+                      ghczmprim:GHCziPrim.RealWorld)
+                     ->
+                     ghczmprim:GHCziPrim.Z2H
+                     (ghczmprim:GHCziPrim.Statezh ghczmprim:GHCziPrim.RealWorld)
+                     ghczmprim:GHCziTuple.Z0T =
+    \ (etaB1::ghczmprim:GHCziPrim.Statezh
+              ghczmprim:GHCziPrim.RealWorld) ->
+        base:GHCziIOziHandleziText.hPutStr2 base:GHCziIOziHandleziFD.stdout
+        main:Main.main2 ghczmprim:GHCziTypes.True etaB1;
+  main:Main.main :: ghczmprim:GHCziTypes.IO
+                    ghczmprim:GHCziTuple.Z0T =
+    %cast (main:Main.main1)
+    (%sub
+     (ghczmprim:GHCziTypes.NTCoZCIO[0] <ghczmprim:GHCziTuple.Z0T>_R));
+  main:Main.main3 :: (ghczmprim:GHCziPrim.Statezh
+                      ghczmprim:GHCziPrim.RealWorld)
+                     ->
+                     ghczmprim:GHCziPrim.Z2H
+                     (ghczmprim:GHCziPrim.Statezh ghczmprim:GHCziPrim.RealWorld)
+                     ghczmprim:GHCziTuple.Z0T =
+    \ (etaX9::ghczmprim:GHCziPrim.Statezh
+              ghczmprim:GHCziPrim.RealWorld) ->
+        base:GHCziTopHandler.runMainIO1 @ ghczmprim:GHCziTuple.Z0T
+        (%cast (main:Main.main1)
+         (%sub
+          (ghczmprim:GHCziTypes.NTCoZCIO[0] <ghczmprim:GHCziTuple.Z0T>_R)))
+        etaX9;
+  main:ZCMain.main :: ghczmprim:GHCziTypes.IO
+                      ghczmprim:GHCziTuple.Z0T =
+    %cast (main:Main.main3)
+    (%sub
+     (ghczmprim:GHCziTypes.NTCoZCIO[0] <ghczmprim:GHCziTuple.Z0T>_R));

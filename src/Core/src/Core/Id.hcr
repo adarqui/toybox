@@ -1,0 +1,3 @@
+%module main:CoreziId
+  main:CoreziId.idzq :: %forall aarN . aarN -> aarN =
+    \ @ aaK2 (xarO::aaK2) -> xarO;

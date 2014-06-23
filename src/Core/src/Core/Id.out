@@ -1,0 +1,368 @@
+Glasgow Haskell Compiler, Version 7.8.2, stage 2 booted by GHC version 7.4.1
+Using binary package database: /usr/lib/ghc-7.8.2/package.conf.d/package.cache
+Using binary package database: /home/d/.ghc/x86_64-linux-7.8.2/package.conf.d/package.cache
+hiding package transformers-0.3.0.0 to avoid conflict with later version transformers-0.4.1.0
+wired-in package ghc-prim mapped to ghc-prim-0.3.1.0-948744e1f99cc8bcc7c7d3ba60c7c2d8
+wired-in package integer-gmp mapped to integer-gmp-0.5.1.0-dc47f6b546fc171f67a7f7d311684a99
+wired-in package base mapped to base-4.7.0.0-018311399e3b6350d5be3a16b144df9b
+wired-in package rts mapped to builtin_rts
+wired-in package template-haskell mapped to template-haskell-2.9.0.0-dcc8c210fb02937e104bc1784d7b0f06
+wired-in package dph-seq not found.
+wired-in package dph-par not found.
+hiding package transformers-0.3.0.0 to avoid conflict with later version transformers-0.4.1.0
+wired-in package ghc-prim mapped to ghc-prim-0.3.1.0-948744e1f99cc8bcc7c7d3ba60c7c2d8
+wired-in package integer-gmp mapped to integer-gmp-0.5.1.0-dc47f6b546fc171f67a7f7d311684a99
+wired-in package base mapped to base-4.7.0.0-018311399e3b6350d5be3a16b144df9b
+wired-in package rts mapped to builtin_rts
+wired-in package template-haskell mapped to template-haskell-2.9.0.0-dcc8c210fb02937e104bc1784d7b0f06
+wired-in package dph-seq not found.
+wired-in package dph-par not found.
+*** Chasing dependencies:
+Chasing modules from: *src/Core/Id.hs
+Stable obj: []
+Stable BCO: []
+Ready for upsweep
+  [NONREC
+      ModSummary {
+         ms_hs_date = 2014-06-22 07:56:35.499572479 UTC
+         ms_mod = main:Core.Id,
+         ms_textual_imps = [import (implicit) Prelude]
+         ms_srcimps = []
+      }]
+*** Deleting temp files:
+compile: input file src/Core/Id.hs
+Created temporary directory: /tmp/ghc3151_0
+*** Checking old interface for main:Core.Id:
+[1 of 1] Compiling Core.Id          ( src/Core/Id.hs, src/Core/Id.o )
+*** Parser:
+
+==================== Parser ====================
+module Core.Id (
+        id'
+    ) where
+id' :: a -> a
+id' x = x
+
+
+*** Renamer/typechecker:
+TYPE SIGNATURES
+  id' :: forall a. a -> a
+TYPE CONSTRUCTORS
+COERCION AXIOMS
+Dependent modules: []
+Dependent packages: [base, ghc-prim, integer-gmp]
+
+==================== Typechecker ====================
+AbsBinds [a] []
+  {Exports: [id' <= id'
+               <>]
+   Exported types: id' :: forall a. a -> a
+   Binds: id' x = x}
+
+*** Desugar:
+
+==================== Desugar (after optimization) ====================
+Result size of Desugar (after optimization)
+  = {terms: 4, types: 5, coercions: 0}
+
+Core.Id.id' :: forall a. a -> a
+Core.Id.id' = \ (@ a) (x :: a) -> x
+
+
+
+*** Core Linted result of Desugar (after optimization):
+*** Simplifier:
+SimplBind [main:Core.Id.id'{v r0} [lidx]]
+
+==================== Simplifier ====================
+  Max iterations = 4
+  SimplMode {Phase = InitialPhase [Gentle],
+             no inline,
+             rules,
+             eta-expand,
+             no case-of-case}
+Result size of Simplifier = {terms: 4, types: 5, coercions: 0}
+
+Core.Id.id' :: forall a. a -> a
+Core.Id.id' = \ (@ a) (x :: a) -> x
+
+
+
+*** Core Linted result of Simplifier:
+*** Specialise:
+
+==================== Specialise ====================
+Result size of Specialise = {terms: 4, types: 5, coercions: 0}
+
+Core.Id.id' :: forall a. a -> a
+Core.Id.id' = \ (@ a) (x :: a) -> x
+
+
+
+*** Core Linted result of Specialise:
+*** Float out(FOS {Lam = Just 0, Consts = True, PAPs = False}):
+
+==================== Levels added: ====================
+<Core.Id.id',<0,0>>
+<Core.Id.id',<0,0>> = \ <a,<1,0>> <x,<1,0>> -> x
+
+
+
+==================== Float out(FOS {Lam = Just 0, Consts = True, PAPs = False}) ====================
+Result size of Float out(FOS {Lam = Just 0,
+                              Consts = True,
+                              PAPs = False})
+  = {terms: 4, types: 5, coercions: 0}
+
+Core.Id.id' :: forall a. a -> a
+Core.Id.id' = \ (@ a) (x :: a) -> x
+
+
+
+*** Core Linted result of Float out(FOS {Lam = Just 0, Consts = True, PAPs = False}):
+*** Float inwards:
+
+==================== Float inwards ====================
+Result size of Float inwards = {terms: 4, types: 5, coercions: 0}
+
+Core.Id.id' :: forall a. a -> a
+Core.Id.id' = \ (@ a) (x :: a) -> x
+
+
+
+*** Core Linted result of Float inwards:
+*** Simplifier:
+SimplBind [main:Core.Id.id'{v r0} [lidx]]
+
+==================== Simplifier ====================
+  Max iterations = 4
+  SimplMode {Phase = 2 [main],
+             inline,
+             rules,
+             eta-expand,
+             case-of-case}
+Result size of Simplifier = {terms: 4, types: 5, coercions: 0}
+
+Core.Id.id' :: forall a. a -> a
+Core.Id.id' = \ (@ a) (x :: a) -> x
+
+
+
+*** Core Linted result of Simplifier:
+*** Simplifier:
+SimplBind [main:Core.Id.id'{v r0} [lidx]]
+
+==================== Simplifier ====================
+  Max iterations = 4
+  SimplMode {Phase = 1 [main],
+             inline,
+             rules,
+             eta-expand,
+             case-of-case}
+Result size of Simplifier = {terms: 4, types: 5, coercions: 0}
+
+Core.Id.id' :: forall a. a -> a
+Core.Id.id' = \ (@ a) (x :: a) -> x
+
+
+
+*** Core Linted result of Simplifier:
+*** Simplifier:
+SimplBind [main:Core.Id.id'{v r0} [lidx]]
+
+==================== Simplifier ====================
+  Max iterations = 4
+  SimplMode {Phase = 0 [main],
+             inline,
+             rules,
+             eta-expand,
+             case-of-case}
+Result size of Simplifier = {terms: 4, types: 5, coercions: 0}
+
+Core.Id.id' :: forall a. a -> a
+Core.Id.id' = \ (@ a) (x :: a) -> x
+
+
+
+*** Core Linted result of Simplifier:
+*** Demand analysis:
+
+==================== Demand analysis ====================
+Result size of Demand analysis = {terms: 4, types: 5, coercions: 0}
+
+Core.Id.id' :: forall a. a -> a
+Core.Id.id' = \ (@ a) (x :: a) -> x
+
+
+
+*** Core Linted result of Demand analysis:
+*** Worker Wrapper binds:
+
+==================== Worker Wrapper binds ====================
+Result size of Worker Wrapper binds
+  = {terms: 4, types: 5, coercions: 0}
+
+Core.Id.id' :: forall a. a -> a
+Core.Id.id' = \ (@ a) (x :: a) -> x
+
+
+
+*** Core Linted result of Worker Wrapper binds:
+*** Simplifier:
+SimplBind [main:Core.Id.id'{v r0} [lidx]]
+
+==================== Simplifier ====================
+  Max iterations = 4
+  SimplMode {Phase = 0 [post-worker-wrapper],
+             inline,
+             rules,
+             eta-expand,
+             case-of-case}
+Result size of Simplifier = {terms: 4, types: 5, coercions: 0}
+
+Core.Id.id' :: forall a. a -> a
+Core.Id.id' = \ (@ a) (x :: a) -> x
+
+
+
+*** Core Linted result of Simplifier:
+*** Float out(FOS {Lam = Just 0, Consts = True, PAPs = True}):
+
+==================== Levels added: ====================
+<Core.Id.id',<0,0>>
+<Core.Id.id',<0,0>> = \ <a,<1,0>> <x,<1,0>> -> x
+
+
+
+==================== Float out(FOS {Lam = Just 0, Consts = True, PAPs = True}) ====================
+Result size of Float out(FOS {Lam = Just 0,
+                              Consts = True,
+                              PAPs = True})
+  = {terms: 4, types: 5, coercions: 0}
+
+Core.Id.id' :: forall a. a -> a
+Core.Id.id' = \ (@ a) (x :: a) -> x
+
+
+
+*** Core Linted result of Float out(FOS {Lam = Just 0, Consts = True, PAPs = True}):
+*** Common sub-expression:
+
+==================== Common sub-expression ====================
+Result size of Common sub-expression
+  = {terms: 4, types: 5, coercions: 0}
+
+Core.Id.id' :: forall a. a -> a
+Core.Id.id' = \ (@ a) (x :: a) -> x
+
+
+
+*** Core Linted result of Common sub-expression:
+*** Float inwards:
+
+==================== Float inwards ====================
+Result size of Float inwards = {terms: 4, types: 5, coercions: 0}
+
+Core.Id.id' :: forall a. a -> a
+Core.Id.id' = \ (@ a) (x :: a) -> x
+
+
+
+*** Core Linted result of Float inwards:
+*** Liberate case:
+
+==================== Liberate case ====================
+Result size of Liberate case = {terms: 4, types: 5, coercions: 0}
+
+Core.Id.id' :: forall a. a -> a
+Core.Id.id' = \ (@ a) (x :: a) -> x
+
+
+
+*** Core Linted result of Liberate case:
+*** Simplifier:
+SimplBind [main:Core.Id.id'{v r0} [lidx]]
+
+==================== Simplifier ====================
+  Max iterations = 4
+  SimplMode {Phase = 0 [post-liberate-case],
+             inline,
+             rules,
+             eta-expand,
+             case-of-case}
+Result size of Simplifier = {terms: 4, types: 5, coercions: 0}
+
+Core.Id.id' :: forall a. a -> a
+Core.Id.id' = \ (@ a) (x :: a) -> x
+
+
+
+*** Core Linted result of Simplifier:
+*** SpecConstr:
+
+==================== SpecConstr ====================
+Result size of SpecConstr = {terms: 4, types: 5, coercions: 0}
+
+Core.Id.id' :: forall a. a -> a
+Core.Id.id' = \ (@ a) (x :: a) -> x
+
+
+
+*** Core Linted result of SpecConstr:
+*** Simplifier:
+SimplBind [main:Core.Id.id'{v r0} [lidx]]
+
+==================== Simplifier ====================
+  Max iterations = 4
+  SimplMode {Phase = 0 [final],
+             inline,
+             rules,
+             eta-expand,
+             case-of-case}
+Result size of Simplifier = {terms: 4, types: 5, coercions: 0}
+
+Core.Id.id' :: forall a. a -> a
+Core.Id.id' = \ (@ a) (x :: a) -> x
+
+
+
+*** Core Linted result of Simplifier:
+*** Tidy Core:
+
+==================== Tidy Core ====================
+Result size of Tidy Core = {terms: 4, types: 5, coercions: 0}
+
+Core.Id.id' :: forall a. a -> a
+Core.Id.id' = \ (@ a) (x :: a) -> x
+
+
+
+*** Core Linted result of Tidy Core:
+*** CorePrep:
+
+==================== CorePrep ====================
+Result size of CorePrep = {terms: 4, types: 5, coercions: 0}
+
+Core.Id.id' :: forall a. a -> a
+Core.Id.id' = \ (@ a) (x :: a) -> x
+
+
+
+*** Core Linted result of CorePrep:
+*** Stg2Stg:
+
+==================== STG syntax: ====================
+Core.Id.id' :: forall a. a -> a = \r srt:SRT:[] [x] x;
+
+
+*** CodeOutput:
+*** New CodeGen:
+*** CPSZ:
+*** CPSZ:
+*** Assembler:
+Upsweep completely successful.
+*** Deleting temp files:
+Warning: deleting non-existent /tmp/ghc3151_0/ghc3151_3.c
+Warning: deleting non-existent /tmp/ghc3151_0/ghc3151_1.s
+*** Deleting temp files:
+*** Deleting temp dirs:

@@ -1,0 +1,20 @@
+%module main:CoreziIntList
+  main:CoreziIntList.x5 :: ghczmprim:GHCziTypes.Int =
+    ghczmprim:GHCziTypes.Izh (41::ghczmprim:GHCziPrim.Intzh);
+  main:CoreziIntList.x4 :: ghczmprim:GHCziTypes.Int =
+    ghczmprim:GHCziTypes.Izh (42::ghczmprim:GHCziPrim.Intzh);
+  main:CoreziIntList.x3 :: ghczmprim:GHCziTypes.Int =
+    ghczmprim:GHCziTypes.Izh (43::ghczmprim:GHCziPrim.Intzh);
+  main:CoreziIntList.x2 :: ghczmprim:GHCziTypes.ZMZN
+                           ghczmprim:GHCziTypes.Int =
+    ghczmprim:GHCziTypes.ZC @ ghczmprim:GHCziTypes.Int
+    main:CoreziIntList.x3
+    (ghczmprim:GHCziTypes.ZMZN @ ghczmprim:GHCziTypes.Int);
+  main:CoreziIntList.x1 :: ghczmprim:GHCziTypes.ZMZN
+                           ghczmprim:GHCziTypes.Int =
+    ghczmprim:GHCziTypes.ZC @ ghczmprim:GHCziTypes.Int
+    main:CoreziIntList.x4 main:CoreziIntList.x2;
+  main:CoreziIntList.x :: ghczmprim:GHCziTypes.ZMZN
+                          ghczmprim:GHCziTypes.Int =
+    ghczmprim:GHCziTypes.ZC @ ghczmprim:GHCziTypes.Int
+    main:CoreziIntList.x5 main:CoreziIntList.x1;

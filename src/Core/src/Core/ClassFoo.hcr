@@ -1,0 +1,27 @@
+%module main:CoreziClassFoo
+  %newtype main:CoreziClassFoo.Foo main:CoreziClassFoo.NTCoZCFoo aarT
+    = aarT -> ghczmprim:GHCziTypes.Char;
+  main:CoreziClassFoo.foo :: %forall aarT . (main:CoreziClassFoo.Foo
+                                             aarT)
+                                            -> aarT -> ghczmprim:GHCziTypes.Char =
+    \ @ aarT (tplB1::main:CoreziClassFoo.Foo aarT) ->
+        %cast (tplB1)
+        (main:CoreziClassFoo.NTCoZCFoo[0] <aarT>_N);
+  main:CoreziClassFoo.zdfFooBool2 :: ghczmprim:GHCziTypes.Char =
+    ghczmprim:GHCziTypes.Czh ('f'::ghczmprim:GHCziPrim.Charzh);
+  main:CoreziClassFoo.zdfFooBool1 :: ghczmprim:GHCziTypes.Char =
+    ghczmprim:GHCziTypes.Czh ('t'::ghczmprim:GHCziPrim.Charzh);
+  main:CoreziClassFoo.zdfFooBoolzuzdcfoo :: ghczmprim:GHCziTypes.Bool
+                                            -> ghczmprim:GHCziTypes.Char =
+    \ (dsdKk::ghczmprim:GHCziTypes.Bool) ->
+        %case ghczmprim:GHCziTypes.Char dsdKk
+        %of (wildX4::ghczmprim:GHCziTypes.Bool)
+          {ghczmprim:GHCziTypes.False ->
+             main:CoreziClassFoo.zdfFooBool2;
+           ghczmprim:GHCziTypes.True ->
+             main:CoreziClassFoo.zdfFooBool1};
+  main:CoreziClassFoo.zdfFooBool :: main:CoreziClassFoo.Foo
+                                    ghczmprim:GHCziTypes.Bool =
+    %cast (main:CoreziClassFoo.zdfFooBoolzuzdcfoo)
+    (%sub
+     (main:CoreziClassFoo.NTCoZCFoo[0] <ghczmprim:GHCziTypes.Bool>_N));

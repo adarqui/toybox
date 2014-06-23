@@ -1,0 +1,5 @@
+%module main:CoreziSquare
+  main:CoreziSquare.square :: ghczmprim:GHCziTypes.Int ->
+                              ghczmprim:GHCziTypes.Int =
+    \ (xarU::ghczmprim:GHCziTypes.Int) ->
+        base:GHCziNum.zdfNumIntzuzdczt xarU xarU;

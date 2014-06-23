@@ -1,0 +1,5 @@
+%module main:CoreziFlip
+  main:CoreziFlip.flipzq :: %forall aarN barO . aarN ->
+                                                barO -> ghczmprim:GHCziTuple.Z2T barO aarN =
+    \ @ aaK9 @ baKa (a1arP::aaK9) (b1arQ::baKa) ->
+        ghczmprim:GHCziTuple.Z2T @ baKa @ aaK9 b1arQ a1arP;

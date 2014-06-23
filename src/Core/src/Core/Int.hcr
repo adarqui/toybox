@@ -1,0 +1,5 @@
+%module main:CoreziInt
+  main:CoreziInt.x :: ghczmprim:GHCziTypes.Int =
+    ghczmprim:GHCziTypes.Izh (41::ghczmprim:GHCziPrim.Intzh);
+  main:CoreziInt.y :: integerzmgmp:GHCziIntegerziType.Integer =
+    (42::integerzmgmp:GHCziIntegerziType.Integer);

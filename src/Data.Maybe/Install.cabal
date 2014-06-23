@@ -1,4 +1,4 @@
-name:                Applicative
+name:                Maybe
 version:             0.1.0.0
 synopsis:            ToyBox - haskell variant
 homepage:            https://github.com/adarqui/ToyBox
