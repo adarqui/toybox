@@ -1,1 +1,1 @@
-messing around with various haskell libraries, concepts etc
+messing around with various haskell libraries, concepts etc.
