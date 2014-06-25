@@ -13,3 +13,6 @@ templates:
  Hamlet (HTML)
  Cassius/Lucius (CSS)
  Julius (Javascript)
+
+yinit:
+ yesod init files
