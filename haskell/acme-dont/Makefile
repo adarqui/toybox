@@ -1,4 +1,4 @@
-all:
+all: test_init
 	cabal sandbox init
 	cabal install -j
 
