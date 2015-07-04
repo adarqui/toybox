@@ -7,3 +7,4 @@ dev/
 vendor/
 a.out
 *.swp
+.DS_Store
