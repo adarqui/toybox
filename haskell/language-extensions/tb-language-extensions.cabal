@@ -1,0 +1,25 @@
+name:                tb-language-extensions
+version:             0.1.0.0
+synopsis:            language extension examples
+description:         language extension examples
+homepage:            https://github.com/adarqui/toybox
+license:             MIT
+license-file:        LICENSE
+author:              Andrew Darqui
+maintainer:          andrew.darqui@gmail.com
+category:            ToyBox
+build-type:          Simple
+cabal-version:       >=1.18
+
+library
+  exposed-modules:
+    TB.Language.Extensions.ApplicativeDo
+    TB.Language.Extensions.RecordWildCards
+  build-depends:
+    base >=4.6 && < 5,
+    -- text: https://hackage.haskell.org/package/text
+    text >= 1.1.0.0
+  default-extensions:  OverloadedStrings
+  hs-source-dirs:      src
+  ghc-options:         -Wall
+  default-language:    Haskell2010
