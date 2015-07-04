@@ -1,8 +1,14 @@
+-- https://hackage.haskell.org/package/base-4.8.0.0/docs/Data-Maybe.html#t:Maybe
+
 module TB.Data.Maybe.Instance.Examples (
 ) where
 
 import Control.Applicative
+import Control.Monad
+import Control.Monad.Fix
 import Data.Foldable as F
+import Data.Monoid
+import Data.Typeable
 
 -- | Maybe def
 -- >>> data Maybe a = Just a | Nothing
@@ -17,12 +23,26 @@ import Data.Foldable as F
 -- Just 2
 --
 
+-- | Monoid examples
+--
+-- >>> Nothing `mappend` Just [1]
+-- Just [1]
+--
+-- >>> Just [1] `mappend` Nothing
+-- Just [1]
+--
+-- >>> Just [1] `mappend` Just [2]
+-- Just [1,2]
+--
+-- >>> Nothing `mappend` Nothing
+-- Nothing
+
 -- | Applicative: pure examples
 --
 -- >>> pure (+1) <*> Just 1
 -- Just 2
 --
--- >>> pure (+5) <*>) Nothing
+-- >>> pure (+5) <*> Nothing
 -- Nothing
 --
 -- >>> pure (+) <*> Nothing <*> Just 1
@@ -41,6 +61,20 @@ import Data.Foldable as F
 -- Just 2
 --
 
+-- | Alternative examples
+--
+-- >>> Nothing <|> Just 1
+-- Just 1
+--
+-- >>> Just 1 <|> Nothing
+-- Just 1
+--
+-- >>> Just 1 <|> Just 2
+-- Just 1
+--
+-- >>> Nothing <|> Nothing <|> Just 1
+-- Just 1
+
 -- | Foldable examples
 --
 -- >>> F.foldl (+) 1 $ Just 10
@@ -51,4 +85,62 @@ import Data.Foldable as F
 --
 
 -- | Monad examples
+--
+-- >>> :{
+--  do
+--    Nothing >> Nothing >> Just 10
+-- :}
+-- Nothing
+--
+-- >>> :{
+--  do
+--    Just 10 >>= Just . (+1)
+-- :}
+-- Just 11
+
+-- | MonadPlus examples
+--
+-- >>> :{
+--  do
+--    Nothing `mplus` Nothing
+-- :}
+-- Nothing
+--
+-- >>> :{
+--  do
+--    Nothing `mplus` Just 1
+-- :}
+-- Just 1
+--
+-- >>> :{
+--  do
+--    Just 1 `mplus` Just 1
+-- :}
+-- Just 1
+--
+--
+-- >>> :{
+--  do
+--    mzero `mplus` Just 2
+-- :}
+-- Just 2
+--
+-- >>> :{
+--  do
+--    Just 2 `mplus` mzero
+-- :}
+-- Just 2
+
+-- | MonadFix examples
+--
+-- >>> :{
+--  do
+--    mfix (\x -> Just 5)
+-- :}
+-- Just 5
+
+-- | Data.Data examples
+--
+
+-- | Typeable examples
 --
