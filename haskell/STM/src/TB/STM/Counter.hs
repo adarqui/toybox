@@ -1,7 +1,10 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE DeriveGeneric              #-}
 
 module TB.STM.Counter (
+  Counter,
   new,
+  reset,
   incr,
   decr,
   set,
@@ -11,8 +14,9 @@ module TB.STM.Counter (
 import           Control.Concurrent.STM (TVar, atomically, modifyTVar,
                                          newTVarIO, readTVar, readTVarIO)
 import           Data.Monoid            (Monoid, mappend, mempty)
+import           GHC.Generics
 
-newtype Counter = Counter Int deriving (Eq, Enum, Show)
+newtype Counter = Counter Int deriving (Eq, Enum, Show, Generic)
 
 instance Monoid Counter where
   mempty = Counter 0
@@ -28,6 +32,13 @@ instance Monoid Counter where
 new :: IO (TVar Counter)
 new = do
   newTVarIO $ (mempty :: Counter)
+
+-- | Reset a transactional counter to zero
+--
+-- >>> reset tv
+-- Counter 0
+reset :: TVar Counter -> IO Counter
+reset = set 0
 
 -- | Increments our transactional counter by 1
 --

@@ -16,6 +16,9 @@ library
     TB.Servant
     TB.Servant.API.Counter
   build-depends:
+    -- aeson: https://hackage.haskell.org/package/aeson
+    aeson >= 0.8.0.2,
+    -- base:
     base >= 4.6 && < 5,
     -- servant: https://hackage.haskell.org/package/servant
     servant >= 0.4.2,
@@ -25,9 +28,16 @@ library
     servant-client >= 0.4.2,
     -- stm:
     stm >= 2.4.4,
-    -- wai: http://hackage.haskell.org/package/wai
+    -- text: https://hackage.haskell.org/package/text
+    text,
+    -- transformers: https://hackage.haskell.org/package/transformers
+    transformers >= 0.3.0.0,
+    -- wai: https://hackage.haskell.org/package/wai
     wai >= 3.0.2.3,
     -- warp:
-    warp >= 3.0.13.1
+    warp >= 3.0.13.1,
+    -- tb-stm: https://github.com/adarqui/toybox/haskell/stm
+    tb-stm >= 0.1.0.0
   hs-source-dirs:      src
   default-language:    Haskell2010
+  default-extensions:  DataKinds, DeriveGeneric, OverloadedStrings, TypeFamilies, TypeOperators

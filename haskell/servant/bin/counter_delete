@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ $# -ne 1 ] ; then
+  echo "usage: $0 <tvar|mvar|ioref>" && exit 1
+fi
+
+curl -q -H 'Content-type: text/json' -X DELETE localhost:8080/counter_$1
+echo ""

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ $# -ne 2 ] ; then
+  echo "usage: $0 <tvar|mvar|ioref> <count>" && exit 1
+fi
+
+for i in `seq 1 $2`; do
+  # sleep 0.$RANDOM
+  (v=`./counter_post $1`; echo "$i-$v") 2>/dev/null &
+done
+
+sleep 1
+echo ""
