@@ -1,0 +1,31 @@
+name:                tb-stm
+version:             0.1.0.0
+synopsis:            stm examples
+description:         stm examples
+homepage:            https://github.com/adarqui/ToyBox
+license:             MIT
+license-file:        LICENSE
+author:              Andrew Darqui
+maintainer:          andrew.darqui@gmail.com
+category:            ToyBox
+build-type:          Simple
+cabal-version:       >=1.18
+
+library
+  exposed-modules:
+    TB.STM.Counter
+  build-depends:
+    base >= 4.6 && < 5,
+    -- stm: https://hackage.haskell.org/package/stm
+    stm >= 2.4.4
+  hs-source-dirs:      src
+  ghc-options:         -Wall
+  default-language:    Haskell2010
+
+test-suite doctests
+  default-language:   Haskell2010
+  type:               exitcode-stdio-1.0
+  ghc-options:        -threaded
+  main-is:            doctests.hs
+  build-depends:      base >4 && <5, doctest, doctest-discover
+  HS-Source-Dirs:     test
