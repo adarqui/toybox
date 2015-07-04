@@ -1,0 +1,33 @@
+name:                tb-servant
+version:             0.1.0.0
+synopsis:            servant examples
+description:         servant examples
+homepage:            https://github.com/adarqui/toybox
+license:             MIT
+license-file:        LICENSE
+author:              Andrew Darqui
+maintainer:          andrew.darqui@gmail.com
+category:            ToyBox
+build-type:          Simple
+cabal-version:       >=1.18
+
+library
+  exposed-modules:
+    TB.Servant
+    TB.Servant.API.Counter
+  build-depends:
+    base >= 4.6 && < 5,
+    -- servant: https://hackage.haskell.org/package/servant
+    servant >= 0.4.2,
+    -- servant-server: http://hackage.haskell.org/package/servant-server
+    servant-server >= 0.4.2,
+    -- servant-client: http://hackage.haskell.org/package/servant-client
+    servant-client >= 0.4.2,
+    -- stm:
+    stm >= 2.4.4,
+    -- wai: http://hackage.haskell.org/package/wai
+    wai >= 3.0.2.3,
+    -- warp:
+    warp >= 3.0.13.1
+  hs-source-dirs:      src
+  default-language:    Haskell2010
