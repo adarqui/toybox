@@ -1,11 +1,18 @@
+{-# LANGUAGE OverloadedStrings #-}
+
 module TB.Data.Either.Parser.Simple (
-  parseString,
+  parseText,
   parseDigit,
-  parseHexString,
+  parseHexText,
   parseHex
 ) where
 
 import           Data.Char
+import           Data.Text (Text)
+import qualified Data.Text as T
+
+-- $setup
+-- >>> :set -XOverloadedStrings
 
 data Hex =
     HexDigit Int
@@ -20,21 +27,20 @@ data Hex =
 -- >>> parseDigit 'm'
 -- Left "parse error"
 --
-parseDigit :: Char -> Either String Integer
+parseDigit :: Char -> Either Text Integer
 parseDigit c
   | isDigit c = Right (fromIntegral (digitToInt c) :: Integer)
   | otherwise = Left "parse error"
 
 -- | Parse a string of digits
 --
--- >>> parseString "1234"
+-- >>> parseText "1234"
 -- Right [1,2,3,4]
 --
-parseString :: String -> Either String [Integer]
-parseString s = do
-  mapM parseDigit $ dropWhile (== '0') s
+parseText :: Text -> Either Text [Integer]
+parseText = mapM parseDigit . T.unpack . T.dropWhile (== '0')
 
--- Hex Strings
+-- Hex Texts
 
 -- | Parse a hex digit from a character
 --
@@ -47,7 +53,7 @@ parseString s = do
 -- >>> parseHex 'g'
 -- Left "parse error"
 --
-parseHex :: Char -> Either String Hex
+parseHex :: Char -> Either Text Hex
 parseHex c
   | isDigit c = Right $ HexDigit $ digitToInt c
   | lower >= 'a' && lower <= 'f' = Right $ HexChar c
@@ -57,9 +63,8 @@ parseHex c
 
 -- | Parse hex digits from a string
 --
--- >>> parseHexString "a9"
+-- >>> parseHexText "a9"
 -- Right [HexChar 'a',HexDigit 9]
 --
-parseHexString :: String -> Either String [Hex]
-parseHexString s = do
-  mapM parseHex s
+parseHexText :: Text -> Either Text [Hex]
+parseHexText = mapM parseHex . T.unpack
