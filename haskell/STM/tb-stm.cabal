@@ -28,4 +28,4 @@ test-suite doctests
   ghc-options:        -threaded
   main-is:            doctests.hs
   build-depends:      base >4 && <5, doctest, doctest-discover
-  HS-Source-Dirs:     test
+  hs-source-dirs:     test
