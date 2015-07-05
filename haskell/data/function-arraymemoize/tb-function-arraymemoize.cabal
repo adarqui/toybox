@@ -1,0 +1,20 @@
+name:                tb-function-arraymemoize
+version:             0.1.0.0
+synopsis:            array memoize examples
+description:         array memoize examples
+homepage:            https://github.com/adarqui/toybox
+author:              adarqui
+maintainer:          andrew.darqui@gmail.com
+category:            Experimental
+build-type:          Simple
+cabal-version:       >=1.18
+
+library
+  exposed-modules:
+    TB.Data.ArrayMemoize.Fib
+  build-depends:
+   base ==4.7.*,
+   -- arraypmemoize: https://hackage.haskell.org/package/array-memoize
+   array-memoize
+  ghc-options:      -Wall
+  hs-source-dirs:   src
