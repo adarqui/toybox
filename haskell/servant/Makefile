@@ -4,7 +4,7 @@ all: init test_init
 
 init:
 	cabal sandbox init
-	cabal sandbox add-source ../stm
+	cabal sandbox add-source ../control/stm
 
 test_init:
 	cabal sandbox init
