@@ -3,16 +3,17 @@
 module TB.Data.Maybe.Instance.Examples (
 ) where
 
-import Control.Applicative
-import Control.Monad
-import Control.Monad.Fix
-import Data.Foldable as F
-import Data.Monoid
-import Data.Typeable
+-- $setup
+-- >>> import Control.Applicative
+-- >>> import Control.Monad
+-- >>> import Control.Monad.Fix
+-- >>> import Control.Monad.Zip
+-- >>> import Data.Foldable as F
+-- >>> import Data.Monoid
+-- >>> import Data.Typeable
 
 -- | Maybe def
 -- >>> data Maybe a = Just a | Nothing
---
 
 -- | Functor examples
 --
@@ -21,9 +22,11 @@ import Data.Typeable
 --
 -- >>> fmap (+1) $ Just 1
 -- Just 2
---
 
 -- | Monoid examples
+--
+-- mempty :: Maybe Int
+-- Nothing
 --
 -- >>> Nothing `mappend` Just [1]
 -- Just [1]
@@ -39,6 +42,9 @@ import Data.Typeable
 
 -- | Applicative: pure examples
 --
+-- >>> pure 1 :: Maybe Int
+-- Just 1
+--
 -- >>> pure (+1) <*> Just 1
 -- Just 2
 --
@@ -50,7 +56,6 @@ import Data.Typeable
 --
 -- >>> pure (+) <*> Just 1 <*> Just 1
 -- Just 2
---
 
 -- | Applicative: fmap examples
 --
@@ -59,7 +64,6 @@ import Data.Typeable
 --
 -- >>> (+) <$> Just 1 <*> Just 1
 -- Just 2
---
 
 -- | Alternative examples
 --
@@ -79,7 +83,6 @@ import Data.Typeable
 --
 -- >>> F.foldl (+) 1 $ Just 10
 -- 11
---
 
 -- | Traversable examples
 --
@@ -138,6 +141,14 @@ import Data.Typeable
 --    mfix (\x -> Just 5)
 -- :}
 -- Just 5
+
+-- | MonadZip examples
+--
+-- - >>> :{
+--  do
+--    mzipWith (+) (Just 1) (Just 1)
+-- :}
+-- Just 2
 
 -- | Data.Data examples
 --
