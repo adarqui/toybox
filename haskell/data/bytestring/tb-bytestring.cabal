@@ -1,0 +1,22 @@
+name:                tb-bytestring
+version:             0.1.0.0
+synopsis:            bytestring examples
+description:         bytestring examples
+homepage:            https://github.com/adarqui/toybox
+license:             MIT
+license-file:        LICENSE
+author:              Andrew Darqui
+maintainer:          andrew.darqui@gmail.com
+category:            Experimental
+build-type:          Simple
+cabal-version:       >=1.18
+
+library
+  exposed-modules:
+    TB.Data.Bytestring
+  build-depends:
+    base >=4.7 && <4.8,
+    -- bytestring: https://hackage.haskell.org/package/bytestring
+    bytestring >= 0.10.6.0
+  hs-source-dirs:      src
+  default-language:    Haskell2010
