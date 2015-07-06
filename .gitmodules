@@ -1,0 +1,3 @@
+[submodule "haskell/tomahawkins/monopoly/submodules/monopoly"]
+	path = haskell/tomahawkins/monopoly/submodules/monopoly
+	url = https://github.com/tomahawkins/monopoly
