@@ -6,7 +6,8 @@ module TB.Attoparsec.Parsers.Services (
   Protocol (..),
   readServices,
   parseService,
-  parseServices
+  parseServices,
+  parseServicesIO
 ) where
 
 import           Control.Applicative
@@ -98,7 +99,11 @@ parseService = do
   return $ Service service port proto desc
 
 -- | Parse all of /etc/services into Service records
-parseServices :: IO [Service]
-parseServices = do
+parseServices :: Text -> [Service]
+parseServices = rights . map (parseOnly parseService) . T.lines
+
+-- | Parse all of /etc/services into Service records
+parseServicesIO :: IO [Service]
+parseServicesIO = do
 --  liftM (rights . map (parseOnly parseService) . T.lines) readServices
     rights . map (parseOnly parseService) . T.lines <$> readServices
