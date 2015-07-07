@@ -4,18 +4,15 @@
 module TB.Attoparsec.Parsers.Services (
 ) where
 
-import Control.Monad
 import           Control.Applicative
---import           Data.Attoparsec.Lazy
+import           Control.Monad
 import           Data.Attoparsec.Text
---import           Data.ByteString.Lazy.Char8 (ByteString)
---import qualified Data.ByteString.Lazy.Char8 as C
+import           Data.Either
+import           Data.Maybe
 import           Data.Text            (Text)
 import qualified Data.Text            as T
 import qualified Data.Text.IO         as T
 import           GHC.Generics
-import Data.Maybe
-import Data.Either
 
 data Protocol
   = ProtoTCP
