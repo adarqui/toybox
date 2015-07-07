@@ -4,6 +4,7 @@
 module TB.Attoparsec.Parsers.Services (
   Service (..),
   Protocol (..),
+  readServices,
   parseService,
   parseServices
 ) where
