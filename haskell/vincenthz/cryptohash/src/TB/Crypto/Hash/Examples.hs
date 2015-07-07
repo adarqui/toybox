@@ -4,14 +4,14 @@ module TB.Crypto.Hash.Examples (
   sha1File
 ) where
 
-import Numeric
-import           Data.Char
-import           Data.Word
 import           Control.Applicative
 import           Control.Monad
 import           Crypto.Hash.SHA1
-import           Data.ByteString  (ByteString)
-import qualified Data.ByteString  as B
+import           Data.ByteString     (ByteString)
+import qualified Data.ByteString     as B
+import           Data.Char
+import           Data.Word
+import           Numeric
 
 -- | SHA1 a file
 sha1File :: FilePath -> IO String

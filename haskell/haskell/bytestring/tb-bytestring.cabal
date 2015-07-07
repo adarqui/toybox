@@ -13,7 +13,8 @@ cabal-version:       >=1.18
 
 library
   exposed-modules:
-    TB.Data.Bytestring
+    TB.Data.ByteString
+    TB.Data.ByteString.Misc
   build-depends:
     base >=4.7 && <4.8,
     -- bytestring: https://hackage.haskell.org/package/bytestring
