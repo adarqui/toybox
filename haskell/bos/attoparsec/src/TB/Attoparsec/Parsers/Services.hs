@@ -2,6 +2,10 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 module TB.Attoparsec.Parsers.Services (
+  Service (..),
+  Protocol (..),
+  parseService,
+  parseServices
 ) where
 
 import           Control.Applicative
