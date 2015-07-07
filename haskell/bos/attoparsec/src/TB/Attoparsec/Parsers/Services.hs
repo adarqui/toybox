@@ -22,10 +22,10 @@ data Protocol
   deriving (Eq, Show, Generic)
 
 data Service = Service {
-  name  :: Text,
-  port  :: Int,
-  proto :: Protocol,
-  desc  :: Text
+  serviceName  :: Text,
+  servicePort  :: Int,
+  serviceProto :: Protocol,
+  serviceDesc  :: Text
 } deriving (Eq, Show, Generic)
 
 textToProto :: Text -> Protocol
