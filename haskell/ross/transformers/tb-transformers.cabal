@@ -13,7 +13,14 @@ cabal-version:       >=1.10
 
 library
   exposed-modules:
+    TB.Transformers.Error.Examples
     TB.Transformers.Except.Examples
+    TB.Transformers.List.Examples
+    TB.Transformers.Maybe.Examples
+    TB.Transformers.Reader.Examples
+    TB.Transformers.State.Examples
+    TB.Transformers.Writer.Examples
+    TB.Transformers.RWS.Examples
   build-depends:       base >=4.7 && <4.8, transformers >= 0.4.3.0
   hs-source-dirs:      src
   default-language:    Haskell2010
