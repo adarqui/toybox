@@ -1,7 +1,7 @@
-name:                tb-wyah
+name:                tb-data-function
 version:             0.1.0.0
-synopsis:            wyah examples
-description:         wyah examples
+synopsis:            Data.Function examples
+description:         Data.Function examples
 homepage:            https://github.com/adarqui/toybox
 license:             MIT
 license-file:        LICENSE
@@ -13,10 +13,9 @@ cabal-version:       >=1.10
 
 library
   exposed-modules:
-    TB.WYAH.LambdaCalculus
-    TB.WYAH.Parsing
-    TB.WYAH.Parsing.NanoParsec
-    TB.WYAH.Parsing.NanoParsec.Calculator
-  build-depends:       base >=4.7 && <4.8
+    TB.Data.Function.Examples
+    TB.Data.Function.On.Examples
+    TB.Data.Function.Fix.Examples
+  build-depends:       base >= 4.7 && <4.8
   hs-source-dirs:      src
   default-language:    Haskell2010

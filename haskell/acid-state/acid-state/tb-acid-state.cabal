@@ -1,7 +1,7 @@
-name:                tb-wyah
+name:                tb-acid-state
 version:             0.1.0.0
-synopsis:            wyah examples
-description:         wyah examples
+synopsis:            acid-state examples
+description:         acid-state examples
 homepage:            https://github.com/adarqui/toybox
 license:             MIT
 license-file:        LICENSE
@@ -13,10 +13,6 @@ cabal-version:       >=1.10
 
 library
   exposed-modules:
-    TB.WYAH.LambdaCalculus
-    TB.WYAH.Parsing
-    TB.WYAH.Parsing.NanoParsec
-    TB.WYAH.Parsing.NanoParsec.Calculator
-  build-depends:       base >=4.7 && <4.8
+  build-depends:       base >=4.7 && <4.8, acid-state, safecopy
   hs-source-dirs:      src
   default-language:    Haskell2010
