@@ -14,6 +14,7 @@ cabal-version:       >=1.18
 library
   exposed-modules:
     TB.Language.Extensions.ApplicativeDo
+    TB.Language.Extensions.MonadComprehensions
     TB.Language.Extensions.RecordWildCards
   build-depends:
     base >=4.6 && < 5,
