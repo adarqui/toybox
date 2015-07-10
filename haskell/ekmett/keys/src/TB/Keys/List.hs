@@ -29,6 +29,9 @@ import           Prelude  hiding (index, lookup, zip, zipWith)
 --
 -- >>> mapWithKey (\k a -> (k, a+1)) [1,2,3]
 -- [(0,2),(1,3),(2,4)]
+--
+-- >>> (\k a -> (k, a+1)) <#$> [1,2,3]
+-- [(0,2),(1,3),(2,4)]
 
 
 -- | foldrWithKey
