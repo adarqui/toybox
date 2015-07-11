@@ -1,5 +1,10 @@
 # haskell experimentation
 
+## extremely useful language extensions
+
+OverloadedStrings
+MonadComprehensions
+
 ## consider
 
 filename/path manipulation:
@@ -25,7 +30,32 @@ system types:
 users / groups:
 - unix: System.Posix
 
+parsing haskell:
+- haskell-src-meta
+
+
+## code analysis
+
+SourceGraph
+graphmod
+
+```
+find Data -name '*.hs' | xargs graphmod -q | xdot -
+find src -name '*.hs' | xargs graphmod -q -p --no-cluster | xdot -
+```
+
+lscabal
 
 ## study
 
+haskell-suite/haskell-src-exts/src/Language/Haskell/Exts/Annotated/Syntax.hs
+Gabriel439/Haskell-Pipes-Library
 ekmett/keys
+ekmett/algebra
+jwiegley/coq-pipes
+mstksg/inCode
+mstksg/auto
+mstksg/auto-examples
+yav/mini-sat/tree
+yav/simple-smt
+yav/mascarade
