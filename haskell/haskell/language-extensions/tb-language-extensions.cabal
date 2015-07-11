@@ -16,6 +16,7 @@ library
     TB.Language.Extensions.ApplicativeDo
     TB.Language.Extensions.MonadComprehensions
     TB.Language.Extensions.RecordWildCards
+    TB.Language.Extensions.ViewPatterns
   build-depends:
     base >=4.6 && < 5,
     -- text: https://hackage.haskell.org/package/text
