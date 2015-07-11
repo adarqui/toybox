@@ -6,11 +6,12 @@ module TB.GenericPretty.HaskellSource (
 
 import           Control.Applicative
 import           Control.Monad
+import           Data.Maybe
 import           Language.Haskell.Exts.Annotated.Fixity as Fix
 import           Language.Haskell.Exts.Extension
 import           Language.Haskell.Exts.Parser           hiding (parseExp,
                                                          parsePat, parseType)
-import           Language.Haskell.Exts.Pretty
+import qualified Language.Haskell.Exts.Pretty           as Pr
 import qualified Language.Haskell.Exts.Syntax           as Hs
 import qualified Language.Haskell.Exts.Syntax           as Hs
 import           Language.Haskell.Meta
@@ -18,7 +19,7 @@ import           Language.Haskell.Meta.Syntax.Translate
 import           System.IO
 import           Text.PrettyPrint.GenericPretty
 
-import TB.Language.HaskellSrcMeta.Examples (parseModule')
+import           TB.Language.HaskellSrcMeta.Examples    (parseModule')
 
 instance Out Hs.Module
 instance Out Hs.ModuleName
@@ -87,3 +88,14 @@ deriving instance Generic Hs.Type
 instance Out Hs.Type
 
 parseIt path = putStrLn . pretty =<< parseModule' path
+parseIt' path = putStrLn . Pr.prettyPrint . fromJust =<< parseModule' path
+
+-- | Using their pretty printer
+--
+-- >>> Pr.prettyPrint $ (Var (UnQual (Ident "e")))
+-- "e"
+
+-- | Using GenericPretty
+--
+-- >>> pretty $ (Var (UnQual (Ident "e")))
+-- "Var (UnQual (Ident \"e\"))"
