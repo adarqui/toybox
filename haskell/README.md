@@ -50,6 +50,7 @@ lscabal
 
 haskell-suite/haskell-src-exts/src/Language/Haskell/Exts/Annotated/Syntax.hs
 Gabriel439/Haskell-Pipes-Library
+ekmett/contravariant/src/Data/Functor/Contravariant/Strategy.hs
 ekmett/free/examples
 ekmett/keys
 ekmett/algebra
