@@ -50,6 +50,7 @@ lscabal
 
 haskell-suite/haskell-src-exts/src/Language/Haskell/Exts/Annotated/Syntax.hs
 Gabriel439/Haskell-Pipes-Library
+ekmett/free/examples
 ekmett/keys
 ekmett/algebra
 jwiegley/coq-pipes
@@ -59,3 +60,9 @@ mstksg/auto-examples
 yav/mini-sat/tree
 yav/simple-smt
 yav/mascarade
+TomMD/network-data
+GaloisInc/e2eviv - end-to-end verifiable internet voting
+
+## reverse dependencies
+
+http://packdeps.haskellers.com/reverse
