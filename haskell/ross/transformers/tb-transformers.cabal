@@ -13,6 +13,7 @@ cabal-version:       >=1.10
 
 library
   exposed-modules:
+    TB.Transformers.Data.Functor.Examples
     TB.Transformers.Error.Examples
     TB.Transformers.Except.Examples
     TB.Transformers.List.Examples
