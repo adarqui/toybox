@@ -21,17 +21,21 @@ import           Prelude                   hiding (break)
 fact :: Natural -> Natural
 fact n = fst $ execState fact' (1, n)
 
-fact' :: StateT (Natural, Natural) Identity (Natural, Natural)
+fact' :: State (Natural, Natural) Natural
 fact' = loop $ do
   (acc, n) <- lift get
   case n of
-    0 -> break (1, n)
+    0 -> break acc
     _ -> lift $ put (acc*n, n-1)
 
 
-useless :: Natural -> Natural
-useless = runIdentity . useless'
+-- | uselessness
+--
+-- >>> useless
+-- 1
+useless :: Natural
+useless = runIdentity useless'
 
-useless' :: Natural -> Identity Natural
-useless' n = loop $ do
+useless' :: Identity Natural
+useless' = loop $ do
   break 1
