@@ -1,6 +1,7 @@
 module TB.Break.Examples (
   fact,
-  factGo
+  factGo,
+  useless
 ) where
 
 import           Control.Break
@@ -44,10 +45,10 @@ factGo :: Natural -> Natural
 factGo n = fst $ execState go (1, n)
   where
     go = loop $ do
-      (acc, n) <- lift get
-      case n of
+      (acc, n') <- lift get
+      case n' of
         0 -> break acc
-        _ -> lift $ put (acc*n, n-1)
+        _ -> lift $ put (acc*n, n'-1)
 
 
 -- | uselessness
