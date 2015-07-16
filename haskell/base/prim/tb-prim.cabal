@@ -1,0 +1,19 @@
+name:                tb-prim
+version:             0.1.0.0
+synopsis:            prim examples
+description:         prim examples
+homepage:            https://github.com/adarqui/toybox
+license:             MIT
+license-file:        LICENSE
+author:              Andrew Darqui
+maintainer:          andrew.darqui@gmail.com
+category:            Experimental
+build-type:          Simple
+cabal-version:       >=1.10
+
+library
+  exposed-modules:
+    TB.Prim.Array
+  build-depends:       base >=4.7 && <4.8, ghc-prim
+  hs-source-dirs:      src
+  default-language:    Haskell2010
