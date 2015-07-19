@@ -25,5 +25,25 @@ instance Functor (FTree a) where
 cata :: forall f. Functor f => (forall b. (f b -> b) -> Fix f -> b)
 cata alg (Wrap t) = alg (fmap (cata alg) t)
 
+-- | listSum
+--
+-- >>> listSum (Wrap (Cons 1 (Wrap (Cons 2 (Wrap (Cons 3 (Wrap Nil)))))) :: Fix (FList Int))
+-- 6
+listSum :: Num a => Fix (FList a) -> a
+listSum = cata alg
+  where
+    alg Nil        = 0
+    alg (Cons n r) = n + r
+
+-- | treeSum
+--
+-- >>> treeSum (Wrap (N (Wrap (N (Wrap (L 1)) (Wrap (L 2)))) (Wrap (L 3))) :: Fix (FTree Int))
+-- 6
+treeSum :: Num a => Fix (FTree a) -> a
+treeSum = cata alg
+  where
+    alg  (L n)    = n
+    alg (N b1 b2) = b1 + b2
+
 t_flist = Wrap (Cons 1 (Wrap (Cons 2 (Wrap (Cons 3 (Wrap Nil)))))) :: Fix (FList Int)
 t_ftree = Wrap (N (Wrap (N (Wrap (L 'a')) (Wrap (L 'b')))) (Wrap (L 'c'))) :: Fix (FTree Char)
