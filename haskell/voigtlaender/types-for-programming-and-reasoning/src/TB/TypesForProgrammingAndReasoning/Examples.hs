@@ -86,3 +86,26 @@ eitherSum = cata alg
 t_maybe = Wrap (Just (Wrap Nothing)) :: Fix Maybe
 t_flist = Wrap (Cons 1 (Wrap (Cons 2 (Wrap (Cons 3 (Wrap Nil)))))) :: Fix (FList Int)
 t_ftree = Wrap (N (Wrap (N (Wrap (L 'a')) (Wrap (L 'b')))) (Wrap (L 'c'))) :: Fix (FTree Char)
+
+
+
+--
+-- KNUTH 0-1-2 principle for parallel prefix computation
+--
+
+-- | serial
+--
+-- >>> serial (+) [1..10]
+-- [1,3,6,10,15,21,28,36,45,55]
+serial :: forall a. (a -> a -> a) -> [a] -> [a]
+serial _ []      = []
+serial op (x:xs) = go x xs
+  where
+    go x []     = [x]
+    go x (y:ys) = x : (go (x `op` y) ys)
+
+--
+-- Free Monads
+--
+
+
